@@ -6,6 +6,8 @@ public class Note {
     private String  content;
     private Boolean archived;
 
+    public Note() {  }
+
     public Note(int id, String date, String title, String content, Boolean archived) {
         this.id = id;
         this.date = date;

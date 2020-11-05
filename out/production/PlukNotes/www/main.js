@@ -5,7 +5,7 @@ renderNotes();
 
 async function getNotes() {
     let result = await fetch('/rest/notes');
-    tasks = await result.json();
+    notes = await result.json();
 
 }
 
@@ -17,8 +17,8 @@ async function renderNotes() {
 
     for(let note of notes) {
         {
-            let taskLi = `<li id="${note.id}"><span onclick="">${note.content}</span><button onclick="">x</button></li>`;
-            taskList.innerHTML += taskLi;
+            let noteLi = `<li id="${note.id}"><span onclick="">${note.content}</span><button onclick="">x</button></li>`;
+            noteList.innerHTML += noteLi;
         }
     }
 }
