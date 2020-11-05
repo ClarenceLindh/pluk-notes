@@ -32,9 +32,29 @@ async function renderNotes() {
     for(let note of notes) {
         {
             let noteLi = `<li id="${note.id}"><span class="note-title" onclick="">
-            ${note.title}</span><button onclick="">Delete</button><br>
-            <div class="note-content">${note.content}</div><br><div class="note-date">${note.date}</div></li>`;
+
+            ${note.title}</span><button onclick="deleteNote(this)">Delete</button><br>
+            <div class="note-content">${note.content}</div><br><br><div class="note-date">${note.date}</div></li>`;
+
             noteList.innerHTML += noteLi;
         }
     }
+}
+
+async function deleteNote(removeButton){
+    let taskId = $(removeButton).parent().attr('id');
+    console.log('ID:', taskId)
+    
+    let task = {
+        id: taskId,
+    }
+
+    let result = await fetch("/rest/notes", {
+        method: "DELETE",
+        body: JSON.stringify(task)
+    });
+
+    console.log(await result.text());
+
+    renderNotes()
 }

@@ -32,6 +32,16 @@ public class Main {
             res.send(" post ok");
         });
 
+        app.delete("/rest/notes", (req, res) -> {
+            Note note = (Note) req.getBody(Note.class);
+
+            System.out.println(note.toString());
+
+            db.deleteNote(note);
+
+            res.send("delete OK");
+        });
+
         try {
             app.use(Middleware.statics(Paths.get("src/www").toString()));
         } catch (IOException e) {
