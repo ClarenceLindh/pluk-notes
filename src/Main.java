@@ -32,7 +32,7 @@ public class Main {
             res.send(" post ok");
         });
 
-        app.delete("/rest/tasks", (req, res) -> {
+        app.delete("/rest/notes", (req, res) -> {
             Note note = (Note) req.getBody(Note.class);
 
             System.out.println(note.toString());
