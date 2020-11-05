@@ -1,6 +1,5 @@
 import express.Express;
 import express.middleware.Middleware;
-
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        // write your code here
 
         Express app = new Express();
 
