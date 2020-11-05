@@ -1,3 +1,10 @@
+
+body{
+    background-image: linear-gradient(120deg, #0b6cdb,#ebebf1);
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
 .header-top {
     display: flex;
     justify-content: center;
