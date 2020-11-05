@@ -9,7 +9,38 @@ public class Main {
     public static void main(String[] args) {
 
         Express app = new Express();
+        Database db=new Database();
 
+        app.get("/rest/notes",(req, res)->{
+            List<Note> notes =db.getNotes();
+            res.json(notes);
+        });
+
+        app.get("/rest/notes/:id", (req,res)->{
+            int id=Integer.parseInt(req.getParam("id"));
+
+            Note note = db.getNotesById(id);
+            res.json(note);
+        });
+
+        app.post("/rest/notes", (req,res) -> {
+            Note note = (Note) req.getBody(Note.class);
+
+            System.out.println(note.toString());
+
+            db.createNote(note);
+            res.send(" post ok");
+        });
+
+        app.delete("/rest/notes", (req, res) -> {
+            Note note = (Note) req.getBody(Note.class);
+
+            System.out.println(note.toString());
+
+            db.deleteNote(note);
+
+            res.send("delete OK");
+        });
 
         try {
             app.use(Middleware.statics(Paths.get("src/www").toString()));
