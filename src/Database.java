@@ -6,7 +6,7 @@ public class Database {
     private Connection conn;
     public Database() {
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:PlukNotes.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:pluknotes.db");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
