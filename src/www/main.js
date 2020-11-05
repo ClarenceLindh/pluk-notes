@@ -17,7 +17,9 @@ async function renderNotes() {
 
     for(let note of notes) {
         {
-            let noteLi = `<li id="${note.id}"><span class="note-title" onclick="">${note.title}</span><button onclick="">Delete</button><br><div class="note-content">${note.content}</div></li>`;
+            let noteLi = `<li id="${note.id}"><span class="note-title" onclick="">
+            ${note.title}</span><button onclick="">Delete</button><br>
+            <div class="note-content">${note.content}</div></li>`;
             noteList.innerHTML += noteLi;
         }
     }
