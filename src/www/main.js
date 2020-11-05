@@ -19,7 +19,7 @@ async function renderNotes() {
         {
             let noteLi = `<li id="${note.id}"><span class="note-title" onclick="">
             ${note.title}</span><button onclick="">Delete</button><br>
-            <div class="note-content">${note.content}</div><br></li>`;
+            <div class="note-content">${note.content}</div><br><br><div class="note-date">${note.date}</div></li>`;
             noteList.innerHTML += noteLi;
         }
     }
