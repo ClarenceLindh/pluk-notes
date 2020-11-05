@@ -9,6 +9,10 @@ async function getNotes() {
 
 }
 
+async function creaNote() {
+    
+}
+
 async function renderNotes() {
     await getNotes();
     let noteList = document.querySelector("#notesList ul");
