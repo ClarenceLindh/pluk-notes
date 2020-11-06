@@ -11,8 +11,11 @@ function search(needle){
 
     for(let note of haystack){
         let content = $(note).find('.note-content').text();
-        console.log('Note content', content);
-        if(content.toLowerCase().includes(needle.toLowerCase())){
+        let title = $(note).find('.note-title').text();
+        console.log('Note content: ', content);
+        console.log('Note title: ', title);
+
+        if(title.toLowerCase().includes(needle.toLowerCase()) || content.toLowerCase().includes(needle.toLowerCase())){
             $(note).show();
         } else {
             $(note).hide();
@@ -49,10 +52,12 @@ async function renderNotes() {
 
     for(let note of notes) {
         {
-            let noteLi = `<li class="note" id="${note.id}"><span class="note-title" onclick="">
-
-            ${note.title}</span><button onclick="deleteNote(this)">Delete</button><br>
-            <div class="note-content">${note.content}</div><br><br><div class="note-date">${note.date}</div></li>`;
+            let noteLi = `
+            <li class="note" id="${note.id}">
+            <div class="note-title">${note.title}</div><button onclick="deleteNote(this)">Delete</button><br>
+            <div class="note-content">${note.content}</div><br><br>
+            <div class="note-date">${note.date}</div>
+            </li>`;
 
             noteList.innerHTML += noteLi;
         }
