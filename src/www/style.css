@@ -106,6 +106,7 @@ footer {
 .container .content {
     display: none;
     padding : 5px;
+}
 
 .addNoteButton {
     height:50px; 
