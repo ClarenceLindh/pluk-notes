@@ -3,6 +3,7 @@ let notes = [];
 
 renderNotes();
 
+
 function search(needle){
     
     let haystack = $('.note');
@@ -31,7 +32,7 @@ async function getNotes() {
 }
 
 async function createNote() {
-    let user = {
+    let note = {
         date: "2020-11-09 15:00:00"
         title: "Popcorn"
         content: "Chips"
