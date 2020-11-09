@@ -54,13 +54,22 @@ async function renderNotes() {
         {
             let noteLi = `
             <li class="note" id="${note.id}">
-            <div class="note-title">${note.title}</div><button onclick="deleteNote(this)">Delete</button><br>
+            <div class="note-title">${note.title}</div><button onclick="confirmClick (this)">Delete</button><br>
             <div class="note-content">${note.content}</div><br><br>
             <div class="note-date">${note.date}</div>
             </li>`;
 
             noteList.innerHTML += noteLi;
         }
+    }
+}
+
+async function confirmClick(removeButton){
+    let taskId = $(removeButton).parent().attr('id');
+    if (confirm('Are you sure?')){
+        deleteNote (removeButton);
+    } else {
+        renderNotes ();
     }
 }
 
