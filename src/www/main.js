@@ -49,19 +49,44 @@ async function renderNotes() {
     let noteList = document.querySelector("#notesList ul");
 
     noteList.innerHTML = "";
+    
 
     for(let note of notes) {
         {
             let noteLi = `
+            <div class="container">
+    <div class="header"><span>"${note.title}"</span>
+
+    </div>
             <li class="note" id="${note.id}">
             <div class="note-title">${note.title}</div><button onclick="deleteNote(this)">Delete</button><br>
             <div class="note-content">${note.content}</div><br><br>
             <div class="note-date">${note.date}</div>
+            
+            
             </li>`;
 
             noteList.innerHTML += noteLi;
+            
         }
     }
+    $(".header").click(function () {
+
+        $header = $(this);
+        //getting the next element
+        $content = $header.next();
+        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+        $content.slideToggle(500, function () {
+            //execute this after slideToggle is done
+            //change text of header based on visibility of content div
+            $header.text(function () {
+                //change text based on condition
+                return $content.is(":visible") ? "note.title" : "note.title";
+            });
+        });
+    
+    });
+
 }
 
 async function deleteNote(removeButton){
@@ -81,3 +106,5 @@ async function deleteNote(removeButton){
 
     renderNotes()
 }
+
+
