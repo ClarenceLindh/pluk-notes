@@ -30,10 +30,7 @@ async function getNotes() {
 
 }
 
-async function createNote() {
 
-    }
-}
 
 async function renderNotes() {
     await getNotes();
