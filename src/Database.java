@@ -1,6 +1,9 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
 import express.utils.Utils;
+import org.apache.commons.fileupload.FileItem;
 
+import java.io.FileOutputStream;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.List;
 
@@ -78,8 +81,29 @@ public class Database {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
     }
+
+//    public String uploadImage(FileItem image) {
+//        // the uploads folder in the "www" directory is accessible from the website
+//        // because the whole "www" folder gets served, with all its content
+//
+//        // get filename with file.getName()
+//        String imageUrl = "/uploads/" + image.getName();
+//
+//        // open an ObjectOutputStream with the path to the uploads folder in the "www" directory
+//        try (var os = new FileOutputStream(Paths.get("src/www" + imageUrl).toString())) {
+//            // get the required byte[] array to save to a file
+//            // with file.get()
+//            os.write(image.get());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            // if image is not saved, return null
+//            return null;
+//        }
+//
+//        return imageUrl;
+//    }
+
+
 }
 
