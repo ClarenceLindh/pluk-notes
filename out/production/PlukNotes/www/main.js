@@ -30,17 +30,8 @@ async function getNotes() {
 
 }
 
-function createNote() {
-    var li = document.createElement("LI");
-    var inputValue = document.getElementById("note").value;
-    var liText = document.createTextNode(inputValue);
+async function createNote() {
 
-    li.appendChild(liText);
-    
-    if (inputValue === " ") {
-        alert("Denna raden får inte vara tom");
-    } else {
-        document.getElementById("my-ul").appendChild(li);
     }
 }
 
@@ -57,10 +48,13 @@ async function renderNotes() {
             let noteLi = `
             
             <li class="note" id="${note.id}">
+
             <div>
             <legend class="majorpointslegend">"${note.title}"</legend>
             <div id="mylist" style="display:none">
-            <div class="note-title">${note.title}</div><button onclick="deleteNote(this)">Delete</button><br>
+
+            <div class="note-title">${note.title}</div><button onclick="confirmClick (this)">Delete</button><br>
+
             <div class="note-content">${note.content}</div><br><br>
             <div class="note-date">${note.date}</div>
             </div>
@@ -87,6 +81,15 @@ async function renderNotes() {
     }
     
 
+}
+
+async function confirmClick(removeButton){
+    let taskId = $(removeButton).parent().attr('id');
+    if (confirm('Are you sure?')){
+        deleteNote (removeButton);
+    } else {
+        renderNotes ();
+    }
 }
 
 async function deleteNote(removeButton){
