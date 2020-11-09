@@ -30,8 +30,14 @@
         </main>
         <footer>
             <div>
-                <input type="text" placeholder="Skriv..." id="note">
-                <button>Add note</button>
+                <form action="/action_page.php">
+                    <label for="fname"></label><br>                
+                    <input type="text" id="fname" name="fname" placeholder="Write title..."><br>                
+                    <label for="lname"></label><br> 
+                    <input type="text" id="lname" name="lname" placeholder="Write content..."><br><br>              
+                    <input type="submit" value="Create Note" onclick="createNote(this)">
+                 
+                  </form>
             </div>
         </footer>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
