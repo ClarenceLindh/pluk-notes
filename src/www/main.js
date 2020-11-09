@@ -31,9 +31,9 @@ async function getNotes() {
 
 }
 
-async function createNote() {
+/*async function createNote() {
     let note = {
-        date: "2020-11-09 15:00:00"
+       date: "2020-11-09 15:00:00"
         title: "Popcorn"
         content: "Chips"
         archived: 0
@@ -43,7 +43,7 @@ async function createNote() {
         body: JSON.stringify(note)
     });
     console.log(await result.text())
-}
+}*/
 
 async function renderNotes() {
     await getNotes();
