@@ -56,9 +56,11 @@ public class Database {
 
     public void createNote ( Note note){
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO users ( name, age) VALUES (?,?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO users ( date, title, content, archived) VALUES (?, ?, ?, ?)");
+            stmt.setString(1, note.getDate());
             stmt.setString(1,note.getTitle());
             stmt.setString(2,note.getContent());
+            stmt.setBoolean(3, note.getArchived());
 
             stmt.executeUpdate();
         } catch (SQLException throwables) {
