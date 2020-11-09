@@ -2,7 +2,7 @@ body{
     font-family: Arial;
     margin: 0;
     min-width: 250px;
-    background-image: linear-gradient(120deg, #0b6cdb,#ebebf1);
+    background: black;
     box-sizing: border-box;
     min-height: 100vh;
 }
@@ -16,12 +16,23 @@ ul {
     padding: 0;
   }
 
+.deleteButton {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.945);
+    border: rgb(0, 0, 0);
+    cursor: pointer;
+    align-items: right;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+}
+
   ul li {
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
     list-style-type: none;
-    background: rgb(203, 232, 255);
+    color: white;
+    background: rgba(17, 17, 17, 0.918);
     font-size: 18px;
     transition: 0.3s;
 
@@ -32,24 +43,34 @@ ul {
   }
 
   ul li:nth-child(odd) {
-    background: #e0feff;
+    background: #111111d0;
   }
 
 .header-top {
+    background-color: black;
+    color: white;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    
+    
 }
-.header-top>h1{
-    margin-bottom: 1%;
+
+.search{
+    color: white;
+    background-color: rgb(43, 43, 43);
+    border: rgb(0, 0, 0);
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
-.header-top>h2{
-    margin-top: 0%;
-}
+
 .header-bottom {
     display: flex;
     justify-content: center;
+    background-color: black;
+    color: white;
+    
 }
 
 .note-date {
@@ -64,7 +85,18 @@ main {
     text-align: center;
 }
 
-footer {
-    display: flex;
-    justify-content: center;
+.addNoteButton {
+    height:50px; 
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    width: 100%; 
+    border: white;
+    background-color: black;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
 }
