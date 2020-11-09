@@ -12,7 +12,7 @@
                 <h2>Let's PLUKEE these notes!</h2>
              </div>
         <div class="header-bottom">
-            <input type="text" placeholder="Search" id="myInput" size="30">
+            <input type="text" id="search" placeholder="Type to search" onkeyup="search(this.value)" size="30">
             <button>Search</button>
         </div>
     </header>    
@@ -30,8 +30,11 @@
     </main>
     <footer>
         <div>
-            <button>Add note</button>
+            <input type="text" placeholder="Skriv..." id="note">
+            <button onclick="createNote(this)" class="button">Add note</button>
         </div>
+        <ul id="my-ul">
+        </ul>
     </footer>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 </body>
