@@ -31,8 +31,17 @@ async function getNotes() {
 }
 
 async function createNote() {
-
+    let user = {
+        date: "2020-11-09 15:00:00"
+        title: "Popcorn"
+        content: "Chips"
+        archived: 0
     }
+    let result = await fetch("/rest/notes", {
+        method: "POST"
+        body: JSON.stringify(note)
+    });
+    console.log(await result.text())
 }
 
 async function renderNotes() {
