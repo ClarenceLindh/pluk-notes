@@ -30,8 +30,13 @@
         </main>
         <footer>
             <div>
-                <input type="text" placeholder="Skriv..." id="note">
-                <button>Add note</button>
+                <form onsubmit="createNote(event)">                
+                    <input type="text" id="title" placeholder="Write title..."><br>                
+                    <br> 
+                    <textarea id="content" placeholder="Write content..."></textarea><br><br>              
+                    <button type="submit">Create Note</button>
+                 
+                  </form>
             </div>
         </footer>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>

@@ -29,7 +29,7 @@ public class Main {
             System.out.println(note.toString());
 
             db.createNote(note);
-            res.send(" post ok");
+            res.send(" post OK");
         });
 
         app.delete("/rest/notes", (req, res) -> {

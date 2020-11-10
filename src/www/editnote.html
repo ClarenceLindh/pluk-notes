@@ -30,12 +30,11 @@
         </main>
         <footer>
             <div>
-                <form action="/action_page.php">
-                    <label for="fname"></label><br>                
-                    <input type="text" id="fname" name="fname" placeholder="Write title..."><br>                
-                    <label for="lname"></label><br> 
-                    <input type="text" id="lname" name="lname" placeholder="Write content..."><br><br>              
-                    <input type="submit" value="Create Note" onclick="createNote(this)">
+                <form onsubmit="createNote(event)">                
+                    <input type="text" id="title" placeholder="Write title..."><br>                
+                    <br> 
+                    <textarea id="content" placeholder="Write content..."></textarea><br><br>              
+                    <button type="submit">Create Note</button>
                  
                   </form>
             </div>

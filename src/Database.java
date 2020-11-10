@@ -2,6 +2,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import express.utils.Utils;
 
 import java.sql.*;
+import java.time.Instant;
 import java.util.List;
 
 public class Database {
@@ -56,11 +57,11 @@ public class Database {
 
     public void createNote ( Note note){
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO users ( date, title, content, archived) VALUES (?, ?, ?, ?)");
-            stmt.setString(1, note.getDate());
-            stmt.setString(1,note.getTitle());
-            stmt.setString(2,note.getContent());
-            stmt.setBoolean(3, note.getArchived());
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO notes ( date, title, content, archived) VALUES (?, ?, ?, ?)");
+            stmt.setLong(1, Instant.now().toEpochMilli());
+            stmt.setString(2,note.getTitle());
+            stmt.setString(3,note.getContent());
+            stmt.setBoolean(4, note.getArchived());
 
             stmt.executeUpdate();
         } catch (SQLException throwables) {
