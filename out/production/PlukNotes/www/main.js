@@ -1,7 +1,14 @@
 
 let notes = [];
 
-renderNotes();
+indexRenderNotes();
+
+function indexRenderNotes() {
+    if($('body').is('.index')){
+        renderNotes();
+    }
+}
+
 
 
 function search(needle){
@@ -33,6 +40,7 @@ async function getNotes() {
     
   
 }
+
 
 
 async function renderNotes() {
@@ -102,4 +110,5 @@ async function createNote(e) {
     notes.push(note);
 
     console.log(await result.text())
+    renderNotes()
 }
