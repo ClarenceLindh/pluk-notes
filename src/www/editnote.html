@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
-</head>
-<body>
-    <header>
-        <div class="header-top">
-                <h1>PlukNotes</h1>
-        </div>
-    </header>    
-    <main>
-        <section>
-            <div id="editForm">
-                <form action="/action_page.php">
-                    <label for="fname"></label><br>                
-                    <input type="text" id="fname" name="fname" placeholder="Write title..."><br>                
-                    <label for="lname"></label><br> 
-                    <input type="text" id="lname" name="lname" placeholder="Write content..."><br><br>              
-                    <input type="submit" value="Create Note" onclick="createNote(this)">
-                    </form>
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <div class="header-top">
+                    <h1>PlukNotes</h1>
+                    <h2>Let's PLUKEE these notes!</h2>
+                 </div>
+            <div class="header-bottom">
+                <input type="text" id="search" placeholder="Type to search" onkeyup="search(this.value)" size="30">
+                <button>Search</button>
+            </div>
+        </header>    
+        <main>
+            <section>
+                <div id="notesList">
+                    <ul>
+                        <li>
+                            
+                        </li>
+                      </ul>
+                </div>
+                
+            </section>
+        </main>
+        <footer>
+            <div>
+                <form onsubmit="createNote(event)">                
+                    <input type="text" id="title" placeholder="Write title..."><br>                
+                    <br> 
+                    <textarea id="content" placeholder="Write content..."></textarea><br><br>              
+                    <button type="submit">Create Note</button>
+                 
+                  </form>
+
             </div>
         </section>
     </main>

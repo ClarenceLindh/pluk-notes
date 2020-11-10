@@ -1,19 +1,30 @@
 public class Note {
 
     private int id;
-    private String date;
+    private long date;
     private String title;
     private String  content;
     private Boolean archived;
 
     public Note() {  }
 
-    public Note(int id, String date, String title, String content, Boolean archived) {
+    public Note(int id, long date, String title, String content, Boolean archived) {
         this.id = id;
         this.date = date;
         this.title = title;
         this.content = content;
         this.archived = archived;
+    }
+
+    public Note(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public Note(long date, String title, String content) {
+        this.date = date;
+        this.title = title;
+        this.content = content;
     }
 
     public int getId() {
@@ -24,11 +35,11 @@ public class Note {
         this.id = id;
     }
 
-    public String getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

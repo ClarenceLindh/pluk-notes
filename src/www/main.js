@@ -29,21 +29,12 @@ async function getNotes() {
     let result = await fetch('/rest/notes');
     notes = await result.json();
 
+    console.log(notes);
+    
+  
 }
 
-/*async function createNote() {
-    let note = {
-       date: "2020-11-09 15:00:00"
-        title: "Popcorn"
-        content: "Chips"
-        archived: 0
-    }
-    let result = await fetch("/rest/notes", {
-        method: "POST"
-        body: JSON.stringify(note)
-    });
-    console.log(await result.text())
-}*/
+
 
 async function renderNotes() {
     await getNotes();
@@ -52,7 +43,8 @@ async function renderNotes() {
     noteList.innerHTML = "";
 
     for(let note of notes) {
-        {
+
+        
             let noteLi = `
             <li class="note" id="${note.id}">
             <div class="note-title">${note.title}</div>
@@ -62,7 +54,7 @@ async function renderNotes() {
             </li>`;
 
             noteList.innerHTML += noteLi;
-        }
+        
     }
 }
 
@@ -90,5 +82,26 @@ async function deleteNote(removeButton){
 
     console.log(await result.text());
 
+    renderNotes()
+}
+
+async function createNote(e) {
+    e.preventDefault();
+
+    let titleInput = document.querySelector("#title");
+    let contentInput = document.querySelector("#content");
+
+    let note = {
+        title: titleInput.value,
+        content: contentInput.value
+    }
+    let result = await fetch("/rest/notes", {
+        method: "POST",
+        body: JSON.stringify(note)
+    });
+    
+    notes.push(note);
+
+    console.log(await result.text())
     renderNotes()
 }
