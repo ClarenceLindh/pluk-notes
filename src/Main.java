@@ -1,5 +1,7 @@
 import express.Express;
 import express.middleware.Middleware;
+import org.apache.commons.fileupload.FileItem;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
@@ -46,6 +48,22 @@ public class Main {
             db.deleteNote(note);
 
             res.send("delete OK");
+        });
+
+        app.post("/api/file-upload", (req, res) -> {
+            String imageUrl = null;
+
+            // extract the file from the FormData
+            try {
+                List<FileItem> files = req.getFormData("files");
+                imageUrl = db.uploadImage(files.get(0));
+            } catch (Exception e) {
+                // no image uploaded
+                e.printStackTrace();
+            }
+
+            // return "/uploads/image-name.jpg
+            res.send(imageUrl);
         });
 
         try {
