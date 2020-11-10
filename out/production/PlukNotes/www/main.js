@@ -95,7 +95,7 @@ async function createNote(e) {
         content: contentInput.value
     }
     let result = await fetch("/rest/notes", {
-        method: "POST"
+        method: "POST",
         body: JSON.stringify(note)
     });
     
