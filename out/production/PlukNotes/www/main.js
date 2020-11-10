@@ -3,6 +3,7 @@ let notes = [];
 
 renderNotes();
 
+
 function search(needle){
     
     let haystack = $('.note');
@@ -30,10 +31,19 @@ async function getNotes() {
 
 }
 
-async function createNote() {
-
+/*async function createNote() {
+    let note = {
+       date: "2020-11-09 15:00:00"
+        title: "Popcorn"
+        content: "Chips"
+        archived: 0
     }
-}
+    let result = await fetch("/rest/notes", {
+        method: "POST"
+        body: JSON.stringify(note)
+    });
+    console.log(await result.text())
+}*/
 
 async function renderNotes() {
     await getNotes();
@@ -45,9 +55,10 @@ async function renderNotes() {
         {
             let noteLi = `
             <li class="note" id="${note.id}">
-            <div class="note-title">${note.title}</div><button onclick="confirmClick (this)">Delete</button><br>
-            <div class="note-content">${note.content}</div><br><br>
+            <div class="note-title">${note.title}</div>
+            <div class="note-content">${note.content}</div><br>
             <div class="note-date">${note.date}</div>
+            <button class="deleteButton" onclick="confirmClick (this)">Delete</button><br>
             </li>`;
 
             noteList.innerHTML += noteLi;
