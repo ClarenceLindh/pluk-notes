@@ -1,7 +1,14 @@
 
 let notes = [];
 
-renderNotes();
+indexRenderNotes();
+
+function indexRenderNotes() {
+    if($('body').is('.index')){
+        renderNotes();
+    }
+}
+
 
 
 function search(needle){
