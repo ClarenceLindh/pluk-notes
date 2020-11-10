@@ -13,7 +13,7 @@ public class Note {
         this.date = date;
         this.title = title;
         this.content = content;
-        this.archived = archived;
+
     }
 
     public int getId() {
@@ -47,6 +47,7 @@ public class Note {
     public void setContent(String content) {
         this.content = content;
     }
+
 
     public Boolean getArchived() {
         return archived;

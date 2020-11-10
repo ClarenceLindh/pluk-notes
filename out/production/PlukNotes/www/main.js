@@ -1,7 +1,17 @@
 
 let notes = [];
 
-renderNotes();
+//renderNotes();
+
+indexRenderNotes();
+
+function indexRenderNotes() {
+    if($('body').is('.index')){
+        renderNotes();
+    }
+}
+
+
 
 function search(needle){
     
@@ -31,8 +41,26 @@ async function getNotes() {
 }
 
 async function createNote() {
+    let newContent = document.getElementById("myInput").value;
+    console.log('Value: ', newContent)
 
+    if (newContent.length == 0) {
+        alert('Du har glömt att skriva')
+    } else {
+    
+    let note = {
+        content: newContent,
     }
+
+    let result = await fetch("/rest/notes", {
+        method: "POST",
+        body: JSON.stringify(note)
+    });
+
+    console.log(await result.text());
+    }
+    //document.getElementById('myInput').value='';
+    renderNotes();
 }
 
 async function renderNotes() {
@@ -45,9 +73,10 @@ async function renderNotes() {
         {
             let noteLi = `
             <li class="note" id="${note.id}">
-            <div class="note-title">${note.title}</div><button onclick="confirmClick (this)">Delete</button><br>
-            <div class="note-content">${note.content}</div><br><br>
+            <div class="note-title">${note.title}</div>
+            <div class="note-content">${note.content}</div><br>
             <div class="note-date">${note.date}</div>
+            <button class="deleteButton" onclick="confirmClick (this)">Delete</button><br>
             </li>`;
 
             noteList.innerHTML += noteLi;

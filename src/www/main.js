@@ -1,7 +1,16 @@
 
 let notes = [];
 
-renderNotes();
+//renderNotes();
+
+indexRenderNotes();
+
+function indexRenderNotes() {
+    if($('body').is('.index')){
+        renderNotes();
+    }
+}
+
 
 
 function search(needle){
@@ -31,19 +40,28 @@ async function getNotes() {
 
 }
 
-/*async function createNote() {
+async function createNote() {
+    let newContent = document.getElementById("myInput").value;
+    console.log('Value: ', newContent)
+
+    if (newContent.length == 0) {
+        alert('Du har glömt att skriva')
+    } else {
+    
     let note = {
-       date: "2020-11-09 15:00:00"
-        title: "Popcorn"
-        content: "Chips"
-        archived: 0
+        content: newContent,
     }
+
     let result = await fetch("/rest/notes", {
-        method: "POST"
+        method: "POST",
         body: JSON.stringify(note)
     });
-    console.log(await result.text())
-}*/
+
+    console.log(await result.text());
+    }
+    //document.getElementById('myInput').value='';
+    //renderNotes();
+}
 
 async function renderNotes() {
     await getNotes();

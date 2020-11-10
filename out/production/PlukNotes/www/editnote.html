@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <script src="main.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <div class="header-top">
-                    <h1>PlukNotes</h1>
-                    <h2>Let's PLUKEE these notes!</h2>
-                 </div>
-            <div class="header-bottom">
-                <input type="text" id="search" placeholder="Type to search" onkeyup="search(this.value)" size="30">
-                <button>Search</button>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+                <h1>PlukNotes</h1>
+        </div>
+    </header>    
+    <main>
+        <section>
+            <div id="editForm">
+                <input type="text" placeholder="Lägg till ny sak" id="myInput" size="30">
+                <button onclick="createNote()">Add</button>
             </div>
-        </header>    
-        <main>
-            <section>
-                <div id="notesList">
-                    <ul>
-                        <li>
-                            
-                        </li>
-                      </ul>
-                </div>
-                
-            </section>
-        </main>
-        <footer>
-            <div>
-                <input type="text" placeholder="Skriv..." id="note">
-                <button>Add note</button>
-            </div>
-        </footer>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-    </body>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <a href="editnote.html"><br><br><br>
+            <button class="addNoteButton">Save note</button>
+            </a>
+        </div>
+    </footer>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+</body>
 </html>
