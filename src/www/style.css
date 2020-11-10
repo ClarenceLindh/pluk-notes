@@ -1,3 +1,6 @@
+
+
+
 body{
     font-family: Arial;
     margin: 0;
@@ -7,11 +10,13 @@ body{
     min-height: 100vh;
     align-items: center;
     justify-content: center;
+  
 }
 
 
 *{
     box-sizing: border-box;
+   
 }
 
 ul {
@@ -131,5 +136,7 @@ a{
     margin-left: 30%;
     margin-bottom: 20px;
     color: rgba(255, 255, 255, 0.459);
+    border: 2px solid rgb(128, 128, 128, 0.479);
+    box-shadow: 0 0 10px 0 rgba(243, 240, 240, 0.479);
 }
 
