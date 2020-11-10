@@ -42,7 +42,7 @@ async function renderNotes() {
     noteList.innerHTML = "";
 
     for(let note of notes) {
-        let date = new Date(note.date).toLocaleString();
+
         
             let noteLi = `
             <li class="note" id="${note.id}">
