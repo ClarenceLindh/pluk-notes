@@ -33,9 +33,13 @@ ul {
     padding: 12px 8px 12px 40px;
     list-style-type: none;
     color: white;
-    background: rgba(17, 17, 17, 0.918);
+    background: rgba(43, 35, 35, 0.637);
     font-size: 18px;
     transition: 0.3s;
+
+    border: 2px solid gray;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 gray;
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -44,7 +48,7 @@ ul {
   }
 
   ul li:nth-child(odd) {
-    background: #111111d0;
+    background: #413d3d94;
   }
 
 .header-top {
@@ -71,6 +75,7 @@ ul {
     justify-content: center;
     background-color: black;
     color: white;
+    padding-bottom: 2%;
     
 }
 
@@ -100,4 +105,12 @@ main {
     position: fixed;
     bottom: 0pt;
     left: 0pt;
+}
+
+a{
+ color: inherit; 
+ text-decoration: none;
+}
+.header-top>h1{
+    margin-bottom: 1px;
 }

@@ -17,6 +17,18 @@
                 <input type="text" id="search" placeholder="Type to search" onkeyup="search(this.value)" size="30">
                 <button>Search</button>
             </div>
+            <div class="addNoteContainer">
+                <h3>Add Note!</h3>
+                <form onsubmit="createNote(event)">                
+                    <input type="text" id="title" placeholder="Write title..."><br>                
+                    <br> 
+                    <textarea id="content" placeholder="Write content..."></textarea><br><br>              
+                    <button type="submit">Create Note</button>
+                 
+                  </form>
+
+            </div>
+            
         </header>    
         <main>
             <section>
@@ -30,19 +42,7 @@
                 
             </section>
         </main>
-        <footer>
-            <div>
-                <form onsubmit="createNote(event)">                
-                    <input type="text" id="title" placeholder="Write title..."><br>                
-                    <br> 
-                    <textarea id="content" placeholder="Write content..."></textarea><br><br>              
-                    <button type="submit">Create Note</button>
-                 
-                  </form>
-
-            </div>
-        </section>
-    </main>
+            
     <footer>
         <div>
             <a href="editnote.html"><br><br><br>
