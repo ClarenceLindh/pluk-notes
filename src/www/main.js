@@ -102,4 +102,5 @@ async function createNote(e) {
     notes.push(note);
 
     console.log(await result.text())
+    renderNotes()
 }
