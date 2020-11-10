@@ -31,7 +31,7 @@ async function getNotes() {
 
     console.log(notes);
     
-    renderNotes();
+  
 }
 
 
