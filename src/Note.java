@@ -5,6 +5,7 @@ public class Note {
     private String title;
     private String  content;
     private Boolean archived;
+    private String imageUrl;
 
     public Note() {  }
 
@@ -67,14 +68,23 @@ public class Note {
         this.archived = archived;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "Note{" +
                 "id=" + id +
-                ", date='" + date + '\'' +
+                ", date=" + date +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", archived=" + archived +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }
