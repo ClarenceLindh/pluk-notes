@@ -2,21 +2,28 @@
 
 
 body{
-    background-image: url("image/nick-nice-gPm8h3DS1s4-unsplash.jpg");
+
     font-family: Arial;
-    margin: 0;
-    min-width: 250px;
     background: black;
     box-sizing: border-box;
-    min-height: 100vh;
     align-items: center;
     justify-content: center;
+    background-image: url("image/coal.jpg");
+ 
+    
+   
+
+    background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
   
 }
 
 
 *{
     box-sizing: border-box;
+   
+  
 }
 
 ul {
@@ -58,8 +65,8 @@ ul {
     background: #413d3d94;
   }
 
-.header-top {
-    background-color: black;
+  .header-top {
+  
     color: white;
     display: flex;
     justify-content: center;
@@ -67,6 +74,14 @@ ul {
     align-items: center;
     
     
+}
+
+
+
+.header-top>a{
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 .search{
@@ -80,7 +95,7 @@ ul {
 .header-bottom {
     display: flex;
     justify-content: center;
-    background-color: black;
+    
     color: white;
     padding-bottom: 2%;
     
@@ -105,7 +120,7 @@ main {
     font-weight: bold;
     width: 100%; 
     border: white;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.349);
     background-repeat: repeat;
     background-attachment: scroll;
     background-position: 0% 0%;

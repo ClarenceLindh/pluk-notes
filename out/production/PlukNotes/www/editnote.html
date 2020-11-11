@@ -17,34 +17,31 @@
                 <input type="text" id="search" placeholder="Type to search" onkeyup="search(this.value)" size="30">
                 <button>Search</button>
             </div>
-        </header>    
-        <main>
-            <section>
-                <div id="notesList">
-                    <ul>
-                        <li>
-                            
-                        </li>
-                      </ul>
-                </div>
-                
-            </section>
-        </main>
-        <footer>
-            <div>
+            <div class="addNoteContainer">
+                <h3>Add Note!</h3>
                 <form onsubmit="createNote(event)">                
                     <input type="text" id="title" placeholder="Write title..."><br>                
                     <br> 
-                    <textarea id="content" placeholder="Write content..." cols="30" rows="10"></textarea><br><br>              
-                    <input type="file" accept="image/*" placeholder="Select image">
+                    <textarea id="content" placeholder="Write content..." cols="30" rows="4"></textarea><br><br>              
+                    <input type="file" accept="image/*" placeholder="Select image">              
                     <button type="submit">Create Note</button>
                  
                   </form>
 
             </div>
-        </section>
-    </main>
-    <footer>
+            
+        </header>    
+        <main>
+            <section>
+                <div id="notesList">
+                    <ul>
+                       
+                      </ul>
+                </div>
+                
+            </section>
+        </main>
+   <footer>
         <div>
             <a href="editnote.html"><br><br><br>
             <button class="addNoteButton">Save note</button>

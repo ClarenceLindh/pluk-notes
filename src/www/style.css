@@ -2,6 +2,7 @@
 
 
 body{
+
     font-family: Arial;
     margin: 0;
     min-width: 250px;
@@ -10,12 +11,15 @@ body{
     min-height: 100vh;
     align-items: center;
     justify-content: center;
+   
   
 }
 
 
 *{
     box-sizing: border-box;
+   
+  
 }
 
 ul {
@@ -66,6 +70,14 @@ ul {
     align-items: center;
     
     
+}
+
+
+
+.header-top>a{
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 .search{
