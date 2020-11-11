@@ -72,11 +72,11 @@ public class Database {
 
     public void createNote(Note note) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO notes (title, content, imageUrl) VALUES(?, ?," +
-                    " ?)");
-            stmt.setString(1, note.getTitle());
-            stmt.setString(2, note.getContent());
-            stmt.setString(3, note.getImageUrl());
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO notes (date, title, content, imageUrl) VALUES(?, ?, ?, ?)");
+            stmt.setLong(1, Instant.now().toEpochMilli());
+            stmt.setString(2, note.getTitle());
+            stmt.setString(3, note.getContent());
+            stmt.setString(4, note.getImageUrl());
 
 
             stmt.executeUpdate();
