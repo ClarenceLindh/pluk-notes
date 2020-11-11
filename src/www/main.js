@@ -57,7 +57,7 @@ async function renderNotes() {
             <div class="note-title">${note.title}</div>
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
-            <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
+            <div class="image"><img src="${note.imageUrl}"></div>
             <button class="deleteButton" onclick="confirmClick (this)">Delete</button><br>
             </li>`;
 
