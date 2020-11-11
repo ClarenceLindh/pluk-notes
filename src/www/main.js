@@ -1,6 +1,8 @@
 
 let notes = [];
 
+
+
 indexRenderNotes();
 
 function indexRenderNotes() {
@@ -36,11 +38,21 @@ async function getNotes() {
     let result = await fetch('/rest/notes');
     notes = await result.json();
 
-    console.log(notes);
-    
-  
 }
 
+/*async function createNote() {
+    let note = {
+       date: "2020-11-09 15:00:00"
+        title: "Popcorn"
+        content: "Chips"
+        archived: 0
+    }
+    let result = await fetch("/rest/notes", {
+        method: "POST"
+        body: JSON.stringify(note)
+    });
+    console.log(await result.text())
+}*/
 
 
 async function renderNotes() {
@@ -48,21 +60,44 @@ async function renderNotes() {
     let noteList = document.querySelector("#notesList ul");
 
     noteList.innerHTML = "";
+    
 
     for(let note of notes) {
-        
+
             let noteLi = `
-            <li class="note" id="${note.id}">
+            <div class="container">
+            <div class="header"><span>${note.title}</span></div>
+            <li class="note" id="${note.id}"style="display:none;">
             <div class="note-title">${note.title}</div>
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${note.date}</div>
             <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
             <button class="deleteButton" onclick="confirmClick (this)">Delete</button><br>
-            </li>`;
+            </li></div>
+            `;
 
             noteList.innerHTML += noteLi;
-        
+            
+        }
     }
+    $(".header").click(function () {
+       
+        $header = $(this);
+        //getting the next element
+        $content = $header.next();
+        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+        $content.slideToggle(15, function () {
+            //execute this after slideToggle is done
+            //change text of header based on visibility of content div
+            $header.text(function () {
+                //change text based on condition
+                //return $content.is(":visible")
+            });
+        });
+    
+    });
+    
+
 }
 
 async function confirmClick(removeButton){
@@ -91,6 +126,9 @@ async function deleteNote(removeButton){
 
     renderNotes()
 }
+
+
+
 
 async function createNote(e) {
     e.preventDefault();
@@ -134,3 +172,4 @@ async function createNote(e) {
     console.log(await result.text())
     renderNotes()
 }
+
