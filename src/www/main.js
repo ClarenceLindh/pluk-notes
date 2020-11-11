@@ -3,7 +3,14 @@ let notes = [];
 
 
 
-renderNotes();
+indexRenderNotes();
+
+function indexRenderNotes() {
+    if($('body').is('.index')){
+        renderNotes();
+    }
+}
+
 
 
 function search(needle){
@@ -47,6 +54,7 @@ async function getNotes() {
     console.log(await result.text())
 }*/
 
+
 async function renderNotes() {
     await getNotes();
     let noteList = document.querySelector("#notesList ul");
@@ -55,7 +63,7 @@ async function renderNotes() {
     
 
     for(let note of notes) {
-        {
+
             let noteLi = `
             <div class="container">
             <div class="header"><span>${note.title}</span></div>
@@ -63,6 +71,7 @@ async function renderNotes() {
             <div class="note-title">${note.title}</div>
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${note.date}</div>
+            <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
             <button class="deleteButton" onclick="confirmClick (this)">Delete</button><br>
             </li></div>
             `;
@@ -118,4 +127,49 @@ async function deleteNote(removeButton){
     renderNotes()
 }
 
+
+
+
+async function createNote(e) {
+    e.preventDefault();
+
+    let files = document.querySelector('input[type=file]').files;
+    let formData = new FormData();
+
+    for(let file of files) {
+
+        formData.append('files', file, file.name);
+
+    }
+
+    let uploadResult = await fetch('/api/file-upload', {
+
+        method: 'POST',
+
+        body: formData
+
+    });
+
+    let imageUrl = await uploadResult.text();
+    console.log('URL', imageUrl);
+
+    let titleInput = document.querySelector("#title");
+    let contentInput = document.querySelector("#content");
+
+    let note = {
+        title: titleInput.value,
+        content: contentInput.value,
+        imageUrl: imageUrl
+    }
+    let result = await fetch("/rest/notes", {
+        method: "POST",
+        body: JSON.stringify(note)
+        
+    });
+    
+    notes.push(note);
+
+    console.log(await result.text())
+    renderNotes()
+}
 

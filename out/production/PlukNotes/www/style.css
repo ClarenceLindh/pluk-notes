@@ -123,3 +123,11 @@ main {
     bottom: 0pt;
     left: 0pt;
 }
+
+a{
+ color: inherit; 
+ text-decoration: none;
+}
+.header-top>h1{
+    margin-bottom: 1px;
+}
