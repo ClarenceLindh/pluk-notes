@@ -1,4 +1,8 @@
+
+
+
 body{
+
     font-family: Arial;
     margin: 0;
     min-width: 250px;
@@ -7,11 +11,15 @@ body{
     min-height: 100vh;
     align-items: center;
     justify-content: center;
+   
+  
 }
 
 
 *{
     box-sizing: border-box;
+   
+  
 }
 
 ul {
@@ -64,12 +72,21 @@ ul {
     
 }
 
+
+
+.header-top>a{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
 .search{
     color: white;
-    background-color: rgb(43, 43, 43);
+    background-color: rgba(231, 216, 216, 0.418);
     border: rgb(0, 0, 0);
     padding-bottom: 5px;
     padding-top: 5px;
+    margin-top: 10px;
 }
 
 .header-bottom {
@@ -144,9 +161,11 @@ a{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-right: 40%;
-    margin-left: 40%;
+    margin-right: 30%;
+    margin-left: 30%;
     margin-bottom: 20px;
     color: rgba(255, 255, 255, 0.459);
+    border: 2px solid rgb(128, 128, 128, 0.479);
+    box-shadow: 0 0 10px 0 rgba(243, 240, 240, 0.479);
 }
 
