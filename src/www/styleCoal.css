@@ -86,10 +86,11 @@ ul {
 
 .search{
     color: white;
-    background-color: rgb(43, 43, 43);
+    background-color: rgba(231, 216, 216, 0.418);
     border: rgb(0, 0, 0);
     padding-bottom: 5px;
     padding-top: 5px;
+    margin-top: 10px;
 }
 
 .header-bottom {
