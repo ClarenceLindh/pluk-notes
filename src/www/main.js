@@ -63,6 +63,7 @@ async function renderNotes() {
     
 
     for(let note of notes) {
+        {   
 
             let noteLi = `
             <div class="container">
