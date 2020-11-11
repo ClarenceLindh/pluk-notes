@@ -61,8 +61,8 @@ async function renderNotes() {
     
 
     for(let note of notes) {
-
-      
+        let date = new Date(note.date).toLocaleString();
+        
             let noteLi = `
             <div class="container">
             
@@ -72,7 +72,7 @@ async function renderNotes() {
             <li class="note" id="${note.id}">
             <div class="note-title">${note.title}</div>
             <div class="note-content">${note.content}</div><br>
-            <div class="note-date">${note.date}</div>
+            <div class="note-date">${date}</div>
             <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
             <button class="deleteButton" onclick="confirmClick (this)">Delete</button><br>
             </li>
