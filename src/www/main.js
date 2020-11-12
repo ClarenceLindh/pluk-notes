@@ -203,7 +203,7 @@ async function createNote(e) {
 
 async function updateNote(e) {
     e.preventDefault();
-/*
+
     let files = document.querySelector('input[type=file]').files;
     let formData = new FormData();
 
@@ -220,9 +220,9 @@ async function updateNote(e) {
         body: formData
 
     });
-*/
-//    let imageUrl = await uploadResult.text();
- //   console.log('URL', imageUrl);
+
+   let imageUrl = await uploadResult.text();
+   console.log('URL', imageUrl);
 
     let titleInput = document.querySelector("#title");
     let contentInput = document.querySelector("#content");
@@ -231,7 +231,7 @@ async function updateNote(e) {
         title: titleInput.value,
         content: contentInput.value,
         id: editNoteId,
-//        imageUrl: imageUrl
+        imageUrl: imageUrl
     }
     let result = await fetch("/rest/notes", {
         method: "PUT",
@@ -242,5 +242,5 @@ async function updateNote(e) {
     notes.push(note);
 
     console.log(await result.text())
-    
+    renderNotes();
 }
