@@ -36,6 +36,7 @@ function search(needle){
 
 async function getNotes() {
     let result = await fetch('/rest/notes');
+    console.log('Funkar getnotes? ', result)
     notes = await result.json();
 
 }
@@ -73,10 +74,8 @@ async function renderNotes() {
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${note.date}</div>
             <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
-            <button class="deleteButton" onclick="confirmClick (this)">Delete</button><br>
-            <a href="editnote2.html" onclick="editNote(this);">
-            <button class="editButton">Edit</button><br>
-            </a>
+            <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
+            <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
             </li></div>
             `;
 
@@ -103,6 +102,45 @@ async function renderNotes() {
     
 
 }
+
+async function renderEditNote(id) {
+    console.log('Rendering notes');
+    await getNotes();
+    let noteList = document.querySelector("#editNoteList ul");
+    console.log('getnote ok notelist query OK')
+    noteList.innerHTML = "";
+    
+    for(let note of notes) {
+
+        if (id == note.id) {
+            
+            let noteLi = `
+            <li class="note" id="${note.id}">
+            <div class="addNoteContainer">
+            <h3>Edit Note!</h3>
+            <button onclick="saveNoteId()">klicka</button>
+            <form onsubmit="">                
+                <input type="text" name="textbox" id="textbox" Value="${note.title}"><br>                
+                <br> 
+                <input type ="text" id="content" Value="${note.content}" col="30"><br><br>              
+                <input type="file" accept="image/*" placeholder="Select image">              
+                <button type="submit">Update note</button>
+              </form>  </div>                               
+            </li>`;
+
+            noteList.innerHTML += noteLi;
+            }
+        
+    }
+       
+}
+
+function saveNoteId(editButton) {
+   let editNoteId = $(editButton).parent().attr('id');
+   console.log('Id for note to edit:', editNoteId);
+   renderEditNote(editNoteId);   
+}
+
 
 async function confirmClick(removeButton){
     let taskId = $(removeButton).parent().attr('id');

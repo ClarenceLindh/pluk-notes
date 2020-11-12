@@ -36,7 +36,6 @@ function search(needle){
 
 async function getNotes() {
     let result = await fetch('/rest/notes');
-    console.log('Funkar getnotes? ', result)
     notes = await result.json();
 
 }
@@ -106,7 +105,7 @@ async function renderNotes() {
 async function renderEditNote(id) {
     console.log('Rendering notes');
     await getNotes();
-    let noteList = document.querySelector("#editNoteList ul");
+    let noteList = document.querySelector("#notesList ul");
     console.log('getnote ok notelist query OK')
     noteList.innerHTML = "";
     
@@ -117,9 +116,10 @@ async function renderEditNote(id) {
             let noteLi = `
             <li class="note" id="${note.id}">
             <div class="addNoteContainer">
+            <button onclick="renderNotes();">Back</button>
             <h3>Edit Note!</h3>
-            <button onclick="saveNoteId()">klicka</button>
             <form onsubmit="">                
+                <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
                 <input type="text" name="textbox" id="textbox" Value="${note.title}"><br>                
                 <br> 
                 <input type ="text" id="content" Value="${note.content}" col="30"><br><br>              
