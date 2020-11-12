@@ -39,7 +39,10 @@ function search(needle){
 async function getNotes() {
     let result = await fetch('/rest/notes');
     notes = await result.json();
-
+ //   for(let note of notes) {
+//        let date = new Date(note.date).toLocaleString();
+ //   notes.date.sort(function(a, b){return a - b});
+//    }
 }
 
 
