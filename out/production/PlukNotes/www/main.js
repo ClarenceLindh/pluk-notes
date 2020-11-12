@@ -39,7 +39,10 @@ function search(needle){
 async function getNotes() {
     let result = await fetch('/rest/notes');
     notes = await result.json();
-
+ //   for(let note of notes) {
+//        let date = new Date(note.date).toLocaleString();
+ //   notes.date.sort(function(a, b){return a - b});
+//    }
 }
 
 
@@ -51,13 +54,8 @@ async function renderNotes() {
     
 
     for(let note of notes) {
-<<<<<<< HEAD
         let date = new Date(note.date).toLocaleString();
         
-=======
-        {   
-
->>>>>>> editNoteFeature
             let noteLi = `
             <div class="container">
             <div class="header"><span>${note.title}</span></div>
@@ -65,16 +63,15 @@ async function renderNotes() {
             <div class="note-title">${note.title}</div>
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
-            <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
+            <div class="image"><img src="${note.imageUrl}"></div>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
             </li></div>
             `;
 
             noteList.innerHTML += noteLi;
-            
-        }
     }
+    
     $(".header").click(function () {
        
         $header = $(this);
@@ -91,8 +88,6 @@ async function renderNotes() {
         });
     
     });
-    
-
 }
 
 async function renderEditNote(id) {

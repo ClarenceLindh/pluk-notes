@@ -24,7 +24,7 @@ public class Database {
         List<Note> notes = null;
 
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM notes");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM notes ORDER BY date DESC");
             ResultSet rs = stmt.executeQuery();
 
             Note[] notesFromRS = (Note[]) Utils.readResultSetToObject(rs, Note[].class);
@@ -89,12 +89,14 @@ public class Database {
 
     public void updateNote(Note note) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE notes SET title = ?, content = ?, imageUrl = ?" +
+            PreparedStatement stmt = conn.prepareStatement("UPDATE notes SET date = ?, title = ?, content = ?, " +
+                    "imageUrl = ?" +
                     "WHERE id = ?");
-            stmt.setString(1, note.getTitle());
-            stmt.setString(2, note.getContent());
-            stmt.setString(3, note.getImageUrl());
-            stmt.setInt(4, note.getId());
+            stmt.setLong(1, Instant.now().toEpochMilli());
+            stmt.setString(2, note.getTitle());
+            stmt.setString(3, note.getContent());
+            stmt.setString(4, note.getImageUrl());
+            stmt.setInt(5, note.getId());
 
             stmt.executeUpdate();
 
