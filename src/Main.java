@@ -73,7 +73,7 @@ public class Main {
 
             db.updateNote(note);
 
-            res.send("task updated OK");
+            res.send("Note updated OK");
         });
 
         try {

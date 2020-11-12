@@ -89,12 +89,12 @@ public class Database {
 
     public void updateNote(Note note) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE notes SET title = ?, content = ?, imageUrl = ?" +
+            PreparedStatement stmt = conn.prepareStatement("UPDATE notes SET title = ?, content = ?" +
                     "WHERE id = ?");
             stmt.setString(1, note.getTitle());
             stmt.setString(2, note.getContent());
-            stmt.setString(3, note.getImageUrl());
-            stmt.setInt(4, note.getId());
+          //  stmt.setString(3, note.getImageUrl());
+            stmt.setInt(3, note.getId());
 
             stmt.executeUpdate();
 

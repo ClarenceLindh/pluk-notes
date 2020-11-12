@@ -1,6 +1,8 @@
 
 let notes = [];
 
+let editNoteId = null;
+
 
 
 indexRenderNotes();
@@ -89,10 +91,8 @@ async function renderNotes() {
 }
 
 async function renderEditNote(id) {
-    console.log('Rendering notes');
     await getNotes();
     let noteList = document.querySelector("#notesList ul");
-    console.log('getnote ok notelist query OK')
     noteList.innerHTML = "";
     
     for(let note of notes) {
@@ -100,7 +100,7 @@ async function renderEditNote(id) {
         if (id == note.id) {
             
             let noteLi = `
-            <li class="note" id="${note.id}">
+            <li class="currentNoteId" id="${note.id}">
             <div class="addNoteContainer">
             <button onclick="renderNotes();">Back</button>
             <h3>Edit Note!</h3>
@@ -111,7 +111,7 @@ async function renderEditNote(id) {
                 <input type ="text" id="content" Value="${note.content}"><br><br>              
                 <input type="file" accept="image/*" placeholder="Select image">              
                 <button type="submit">Update note</button>
-              </form>  </div>                               
+              </form>  </div>  
             </li>`;
 
             noteList.innerHTML += noteLi;
@@ -122,7 +122,7 @@ async function renderEditNote(id) {
 }
 
 function saveNoteId(editButton) {
-   let editNoteId = $(editButton).parent().attr('id');
+   editNoteId = $(editButton).parent().attr('id');
    console.log('Id for note to edit:', editNoteId);
    renderEditNote(editNoteId);   
 }
@@ -203,7 +203,7 @@ async function createNote(e) {
 
 async function updateNote(e) {
     e.preventDefault();
-
+/*
     let files = document.querySelector('input[type=file]').files;
     let formData = new FormData();
 
@@ -220,9 +220,9 @@ async function updateNote(e) {
         body: formData
 
     });
-
-    let imageUrl = await uploadResult.text();
-    console.log('URL', imageUrl);
+*/
+//    let imageUrl = await uploadResult.text();
+ //   console.log('URL', imageUrl);
 
     let titleInput = document.querySelector("#title");
     let contentInput = document.querySelector("#content");
@@ -230,7 +230,8 @@ async function updateNote(e) {
     let note = {
         title: titleInput.value,
         content: contentInput.value,
-        imageUrl: imageUrl
+        id: editNoteId,
+//        imageUrl: imageUrl
     }
     let result = await fetch("/rest/notes", {
         method: "PUT",
