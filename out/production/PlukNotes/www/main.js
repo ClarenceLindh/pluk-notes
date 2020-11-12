@@ -36,24 +36,9 @@ function search(needle){
 
 async function getNotes() {
     let result = await fetch('/rest/notes');
-    console.log('Funkar getnotes? ', result)
     notes = await result.json();
 
 }
-
-/*async function createNote() {
-    let note = {
-       date: "2020-11-09 15:00:00"
-        title: "Popcorn"
-        content: "Chips"
-        archived: 0
-    }
-    let result = await fetch("/rest/notes", {
-        method: "POST"
-        body: JSON.stringify(note)
-    });
-    console.log(await result.text())
-}*/
 
 
 async function renderNotes() {
@@ -74,7 +59,7 @@ async function renderNotes() {
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${note.date}</div>
             <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
-            <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
+            <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
             </li></div>
             `;
@@ -106,7 +91,7 @@ async function renderNotes() {
 async function renderEditNote(id) {
     console.log('Rendering notes');
     await getNotes();
-    let noteList = document.querySelector("#editNoteList ul");
+    let noteList = document.querySelector("#notesList ul");
     console.log('getnote ok notelist query OK')
     noteList.innerHTML = "";
     
@@ -117,12 +102,13 @@ async function renderEditNote(id) {
             let noteLi = `
             <li class="note" id="${note.id}">
             <div class="addNoteContainer">
+            <button onclick="renderNotes();">Back</button>
             <h3>Edit Note!</h3>
-            <button onclick="saveNoteId()">klicka</button>
-            <form onsubmit="">                
-                <input type="text" name="textbox" id="textbox" Value="${note.title}"><br>                
+            <form onsubmit="updateNote(event)">                
+                <div class="image"><img src="${note.imageUrl}" alt="note-image"></div><br>
+                <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
                 <br> 
-                <input type ="text" id="content" Value="${note.content}" col="30"><br><br>              
+                <input type ="text" id="content" Value="${note.content}"><br><br>              
                 <input type="file" accept="image/*" placeholder="Select image">              
                 <button type="submit">Update note</button>
               </form>  </div>                               
@@ -143,7 +129,7 @@ function saveNoteId(editButton) {
 
 
 async function confirmClick(removeButton){
-    let taskId = $(removeButton).parent().attr('id');
+    //let noteId = $(removeButton).parent().attr('id');
     if (confirm('Are you sure?')){
         deleteNote (removeButton);
     } else {
@@ -215,3 +201,45 @@ async function createNote(e) {
     renderNotes()
 }
 
+async function updateNote(e) {
+    e.preventDefault();
+
+    let files = document.querySelector('input[type=file]').files;
+    let formData = new FormData();
+
+    for(let file of files) {
+
+        formData.append('files', file, file.name);
+
+    }
+
+    let uploadResult = await fetch('/api/file-upload', {
+
+        method: 'POST',
+
+        body: formData
+
+    });
+
+    let imageUrl = await uploadResult.text();
+    console.log('URL', imageUrl);
+
+    let titleInput = document.querySelector("#title");
+    let contentInput = document.querySelector("#content");
+
+    let note = {
+        title: titleInput.value,
+        content: contentInput.value,
+        imageUrl: imageUrl
+    }
+    let result = await fetch("/rest/notes", {
+        method: "PUT",
+        body: JSON.stringify(note)
+        
+    });
+    
+    notes.push(note);
+
+    console.log(await result.text())
+    
+}
