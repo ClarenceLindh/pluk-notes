@@ -57,11 +57,10 @@ async function renderNotes() {
             <div class="container">
             <div class="header"><span>${note.title}</span></div>
             <li class="note" id="${note.id}"style="display:none;">
-            <div class="note-title">${note.title}</div>
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
             <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
-            <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br><br>
+            <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
             </li></div>
             `;
@@ -102,11 +101,11 @@ async function renderEditNote(id) {
             <button onclick="renderNotes();">Back</button>
             <h3>Edit Note!</h3>
             <form onsubmit="updateNote(event)">                
-                <div class="image"><img src="${note.imageUrl}" alt="note-image"></div><br>
+                <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div><br>
                 <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
                 <br> 
                 <input type ="text" id="content" Value="${note.content}"><br><br>              
-                <input type="file" accept="image/*" placeholder="Select image">              
+                <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
                 <button type="submit">Update note</button>
               </form>  </div>  
             </li>`;

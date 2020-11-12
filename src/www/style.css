@@ -35,10 +35,10 @@ ul {
     align-items: right;
     margin-bottom: 0%;
     padding-bottom: 0%;
+    font-size: 15px;
 }
 
   ul li {
-    cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
     list-style-type: none;
@@ -128,6 +128,17 @@ main {
     padding : 5px;
 }
 
+.editButton{
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.945);
+    border: rgb(0, 0, 0);
+    cursor: pointer;
+    align-items: right;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    font-size: 15px;
+}
+
 .addNoteButton {
     height:50px; 
     font-size: 18px;
@@ -142,6 +153,7 @@ main {
     position: fixed;
     bottom: 0pt;
     left: 0pt;
+    cursor: pointer;
 }
 
 a{
@@ -169,4 +181,16 @@ a{
     border: 2px solid rgb(128, 128, 128, 0.479);
     box-shadow: 0 0 10px 0 rgba(243, 240, 240, 0.479);
 }
+.header{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    align-items: center;
+}
 
+div.image > embed{
+    width: 90%;
+    object-fit: contain;
+
+    height: 65vh;
+}
