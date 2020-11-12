@@ -1,6 +1,8 @@
 
 let notes = [];
 
+
+
 indexRenderNotes();
 
 function indexRenderNotes() {
@@ -61,21 +63,18 @@ async function renderNotes() {
     
 
     for(let note of notes) {
+        {   
 
-      
             let noteLi = `
             <div class="container">
-            
-    <div class="header"><span>${note.title}</span><br>
-    <br>
-    </div>
-            <li class="note" id="${note.id}">
+            <div class="header"><span>${note.title}</span></div>
+            <li class="note" id="${note.id}"style="display:none;">
             <div class="note-title">${note.title}</div>
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${note.date}</div>
-            <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
+            <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
             <button class="deleteButton" onclick="confirmClick (this)">Delete</button><br>
-            </li>
+            </li></div>
             `;
 
             noteList.innerHTML += noteLi;
@@ -83,8 +82,7 @@ async function renderNotes() {
         }
     }
     $(".header").click(function () {
-        CollapseAll(this);
-
+       
         $header = $(this);
         //getting the next element
         $content = $header.next();
@@ -94,26 +92,12 @@ async function renderNotes() {
             //change text of header based on visibility of content div
             $header.text(function () {
                 //change text based on condition
-                return $content.is(":visible") ? '${note.title}' : '${note.title}';
+                //return $content.is(":visible")
             });
         });
     
     });
-    function CollapseAll(obj){
-        $(".header").each(function(i, item){
-            var that = $(this);
-            if($(this).next().is(":visible") && this != obj){
-                $(this).next().slideToggle(15, function () {
-                    //execute this after slideToggle is done
-                    //change text of header based on visibility of content div
-                    that.text(function () {
-                    //change text based on condition
-                    return that.next().is(":visible") ? "${note.title}" : "${note.title}";
-                    });
-                });
-            }
-        });
-        }
+    
 
 }
 
@@ -143,6 +127,9 @@ async function deleteNote(removeButton){
 
     renderNotes()
 }
+
+
+
 
 async function createNote(e) {
     e.preventDefault();
