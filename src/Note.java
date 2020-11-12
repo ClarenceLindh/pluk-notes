@@ -9,13 +9,6 @@ public class Note {
 
     public Note() {  }
 
-    public Note(int id, long date, String title, String content, Boolean archived) {
-        this.id = id;
-        this.date = date;
-        this.title = title;
-        this.content = content;
-        this.archived = archived;
-    }
 
     public Note(String title, String content) {
         this.title = title;
@@ -26,6 +19,23 @@ public class Note {
         this.date = date;
         this.title = title;
         this.content = content;
+    }
+
+    public Note(int id, long date, String title, String content, Boolean archived) {
+        this.id = id;
+        this.date = date;
+        this.title = title;
+        this.content = content;
+        this.archived = archived;
+    }
+
+    public Note(int id, long date, String title, String content, Boolean archived, String imageUrl) {
+        this.id = id;
+        this.date = date;
+        this.title = title;
+        this.content = content;
+        this.archived = archived;
+        this.imageUrl = imageUrl;
     }
 
     public int getId() {
