@@ -1,8 +1,11 @@
 
 let notes = [];
 
+<<<<<<< HEAD
 let editNoteId = null;
 
+=======
+>>>>>>> OperationAddFile
 
 
 indexRenderNotes();
@@ -52,22 +55,33 @@ async function renderNotes() {
 
     for(let note of notes) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         let date = new Date(note.date).toLocaleString();
         
 =======
         {   
 
 >>>>>>> editNoteFeature
+=======
+        {   
+
+>>>>>>> OperationAddFile
             let noteLi = `
             <div class="container">
             <div class="header"><span>${note.title}</span></div>
             <li class="note" id="${note.id}"style="display:none;">
             <div class="note-title">${note.title}</div>
             <div class="note-content">${note.content}</div><br>
+<<<<<<< HEAD
             <div class="note-date">${date}</div>
             <div class="image"><img src="${note.imageUrl}" alt="note-image"></div>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
+=======
+            <div class="note-date">${note.date}</div>
+            <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
+            <button class="deleteButton" onclick="confirmClick (this)">Delete</button><br>
+>>>>>>> OperationAddFile
             </li></div>
             `;
 
@@ -92,6 +106,7 @@ async function renderNotes() {
     
     });
     
+<<<<<<< HEAD
 
 }
 
@@ -125,6 +140,8 @@ async function renderEditNote(id) {
     }
        
 }
+=======
+>>>>>>> OperationAddFile
 
 function saveNoteId(editButton) {
    editNoteId = $(editButton).parent().attr('id');
