@@ -66,6 +66,16 @@ public class Main {
             res.send(imageUrl);
         });
 
+        app.put("/rest/notes", (req, res) -> {
+            Note note = (Note) req.getBody(Note.class);
+
+            System.out.println("(Put: " + note.toString());
+
+            db.updateNote(note);
+
+            res.send("Note updated OK");
+        });
+
         try {
             app.use(Middleware.statics(Paths.get("src/www").toString()));
         } catch (IOException e) {

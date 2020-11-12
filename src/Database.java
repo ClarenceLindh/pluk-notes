@@ -87,6 +87,22 @@ public class Database {
 
     }
 
+    public void updateNote(Note note) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("UPDATE notes SET title = ?, content = ?, imageUrl = ?" +
+                    "WHERE id = ?");
+            stmt.setString(1, note.getTitle());
+            stmt.setString(2, note.getContent());
+            stmt.setString(3, note.getImageUrl());
+            stmt.setInt(4, note.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     public void deleteNote(Note note) {
         try {
             PreparedStatement stmt = conn.prepareStatement("DELETE FROM notes WHERE id = ?");
