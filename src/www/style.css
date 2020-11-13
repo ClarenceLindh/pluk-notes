@@ -188,9 +188,13 @@ a{
     align-items: center;
 }
 
+div.image {
+    height: 100%;
+    width: 100%;
+}
+
 div.image > embed{
     width: 90%;
     object-fit: contain;
-
-    height: 65vh;
+    height: 40vh;
 }

@@ -49,25 +49,54 @@ async function renderNotes() {
 
     noteList.innerHTML = "";
     
-
+    
     for(let note of notes) {
         let date = new Date(note.date).toLocaleString();
-        
+            
             let noteLi = `
             <div class="container">
             <div class="header"><span>${note.title}</span></div>
             <li class="note" id="${note.id}"style="display:none;">
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
-            <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
+            <div class="imgParent"><div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div></div>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
+            <button id="testdel" onclick="rensaskit(this)">DELETE SHIT!</button>
             </li></div>
             `;
 
             noteList.innerHTML += noteLi;
     }
-    
+
+
+    async function rensaskit(e){
+    let noteId = $(e).parent();
+     noteId.removeChild(image);
+
+    renderNotes()
+}
+
+/*
+    let button2 = document.getElementById('testdel');
+
+button2.addEventListener("click", function removeImageifnull(e){
+    vadsomhelst(e);
+    });
+
+    async function vadsomhelst(e){
+    var image = document.querySelector(".image");
+    var imgParent = document.querySelector(".imgParent");
+    var emb = document.querySelector (".em");
+    var unknown = "(unknown)";
+    console.log(emb);
+
+    imgParent.removeChild(image);
+    console.log(image);
+    console.log(e);
+    }
+    */
+
     $(".header").click(function () {
        
         $header = $(this);
@@ -85,6 +114,22 @@ async function renderNotes() {
     
     });
 }
+/*
+function removeImageifnull(){
+var image = document.querySelector(".image");
+var imgParent = document.querySelector(".imgParent");
+var emb = document.querySelector (".em");
+var unknown = "(unknown)";
+console.log(emb);
+
+if (emb === (unknown)){
+    imgParent.removeChild (image);
+}
+//imgParent.removeChild(image);
+console.log(image);
+} 
+*/
+
 
 async function renderEditNote(id) {
     await getNotes();
@@ -240,3 +285,4 @@ async function updateNote(e) {
     console.log(await result.text())
     renderNotes();
 }
+
