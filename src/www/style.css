@@ -62,7 +62,7 @@ ul {
   }
 
 .header-top {
-    background-color: black;
+    
     color: white;
     display: flex;
     justify-content: center;
@@ -74,10 +74,11 @@ ul {
 
 
 
-.header-top>a{
+.header-top>#themeBtn{
     position: absolute;
     top: 0px;
     right: 0px;
+    margin: 1vh 1vw;
 }
 
 .search{
@@ -92,7 +93,7 @@ ul {
 .header-bottom {
     display: flex;
     justify-content: center;
-    background-color: black;
+    
     color: white;
     padding-bottom: 2%;
     

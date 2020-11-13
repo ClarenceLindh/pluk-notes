@@ -1,7 +1,31 @@
 
 let notes = [];
-
+var count = 1;      
 let editNoteId = null;
+let themeButton = document.getElementById('themeBtn')
+
+themeButton.addEventListener("click",function Function(){
+    myFunction();
+});
+
+
+
+function myFunction() {
+  
+    if(count == 0){
+    
+        document.body.style.backgroundImage =" url('image/coal.jpg')";
+       count++; 
+        console.log(count);} 
+        
+        else { document.body.style.backgroundImage =null;
+count=0;
+console.log(count)};
+
+
+  };
+
+  
 
 
 
@@ -10,6 +34,7 @@ indexRenderNotes();
 function indexRenderNotes() {
     if($('body').is('.index')){
         renderNotes();
+        myFunction();
     }
 }
 
