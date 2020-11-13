@@ -1,15 +1,39 @@
+
+
+
 body{
+
     font-family: Arial;
     margin: 0;
     min-width: 250px;
     background: black;
     box-sizing: border-box;
     min-height: 100vh;
-}
+    align-items: center;
+    justify-content: center;
+    
+    min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+    
+  }
+  
+
 
 
 *{
     box-sizing: border-box;
+   
+  
 }
 
 ul {
@@ -25,17 +49,21 @@ ul {
     align-items: right;
     margin-bottom: 0%;
     padding-bottom: 0%;
+    font-size: 15px;
 }
 
   ul li {
-    cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
     list-style-type: none;
     color: white;
-    background: rgba(17, 17, 17, 0.918);
+    background: rgba(43, 35, 35, 0.637);
     font-size: 18px;
     transition: 0.3s;
+
+    border: 2px solid gray;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 gray;
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -44,11 +72,11 @@ ul {
   }
 
   ul li:nth-child(odd) {
-    background: #111111d0;
+    background: #413d3d94;
   }
 
 .header-top {
-    background-color: black;
+    
     color: white;
     display: flex;
     justify-content: center;
@@ -58,19 +86,30 @@ ul {
     
 }
 
+
+
+.header-top>#themeBtn{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 1vh 1vw;
+}
+
 .search{
     color: white;
-    background-color: rgb(43, 43, 43);
+    background-color: rgba(15, 14, 14, 0.863);
     border: rgb(0, 0, 0);
     padding-bottom: 5px;
     padding-top: 5px;
+    margin-top: 10px;
 }
 
 .header-bottom {
     display: flex;
     justify-content: center;
-    background-color: black;
+    
     color: white;
+    padding-bottom: 2%;
     
 }
 
@@ -80,10 +119,40 @@ ul {
 
 .note-title {
     font-weight: bold;
+    text-decoration: underline
 }
 
 main {
     text-align: center;
+}
+.container {
+    width:100%;
+    border:1px solid #00000065;
+}
+.container div {
+    width:100%;
+    height:100%;
+}
+.container .header {
+    background: rgba(43, 35, 35, 0.637);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.container .content {
+    display: none;
+    padding : 5px;
+}
+
+.editButton{
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.945);
+    border: rgb(0, 0, 0);
+    cursor: pointer;
+    align-items: right;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    font-size: 15px;
 }
 
 
@@ -116,7 +185,7 @@ footer {
     font-weight: bold;
     width: 100%; 
     border: white;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.658);
     background-repeat: repeat;
     background-attachment: scroll;
     background-position: 0% 0%;
@@ -124,4 +193,70 @@ footer {
     bottom: 0pt;
     left: 0pt;
 
+    cursor: pointer;
 }
+
+a{
+ color: inherit; 
+ text-decoration: none;
+}
+.header-top>h1{
+    margin-bottom: 1px;
+}
+
+.addNoteContainer{
+    background-color: rgba(46, 49, 53, 0.61);
+    padding-top: 2px;
+    padding-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.459);
+    border: 2px solid rgb(128, 128, 128, 0.479);
+    box-shadow: 0 0 10px 0 rgba(243, 240, 240, 0.479);
+}
+.header{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    align-items: center;
+}
+
+div.image {
+    height: 100%;
+    width: 100%;
+}
+
+ div.image > embed{
+    width: 90%;
+    object-fit: contain;
+
+    height: 65vh;
+}
+
+ #notesList .header{
+     margin-bottom:1%;
+     padding: 2vh 2vw;
+     counter-reset: white;
+ }
+ #notesList .header>span{
+     color:white;
+ }
+
+ #themeBtn{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+    outline: inherit;
+    
+ }
+

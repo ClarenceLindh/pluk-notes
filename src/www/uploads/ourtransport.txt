@@ -1,0 +1,67 @@
+-- 1 och 2.
+INSERT INTO user VALUES('1965-08-15', 'Mårten Svensson');
+
+-- 3.
+INSERT INTO cars VALUES('DFE-431', '032344323', '7', 19, '1965-08-15', NULL);
+
+-- 4.
+INSERT INTO orders VALUES(NULL, '1965-08-15', 'DFE-431', '2019-02-12 15:00', '2019-03-12 14:59', NULL, 'Läxgatan', 'Grytvägen');
+
+-- 5.
+UPDATE cars
+SET available = 1
+WHERE regnr = 'LAE-987';
+
+-- 6.
+UPDATE cars
+SET gps = '032342398'
+WHERE regnr = 'LAE-987';
+
+-- 7. 
+SELECT gps
+FROM cars
+WHERE regnr = 'LAE-987';
+
+-- 8.
+INSERT INTO orders VALUES(NULL, '1965-08-15', 'DFE-431', '2019-02-12 15:00', '2019-03-12 14:59', NULL, 'Läxgatan', 'Grytvägen');
+
+-- 9.
+SELECT gps, user_pickuplocation, (gps - user_pickuplocation)
+AS difference
+FROM cars, orders
+WHERE regnr = 'LAE-987' AND ordernr = '1';
+
+-- 10.
+SELECT Sum(distance)
+FROM cars, orders
+WHERE start_time > '2020-08-01 08:00' AND end_time < '2020-10-01 08:00' AND regnr = 'LAE-987';
+
+-- 11.
+UPDATE cars
+    SET km_price = '5kr'
+    WHERE km_price = '13kr';
+    
+-- 12.
+INSERT INTO orders VALUES(NULL, '1965-08-15', 'DFE-431', CURRENT_TIMESTAMP, '2020-09-17 14:59', NULL, 'Läxgatan', 'Grytvägen', NULL);
+
+-- 13.
+INSERT INTO orders VALUES(NULL, '19991030-7637', 'LAE-987', '2020-09-17 15:00', '2020-09-20 14:59', NULL, 'Yxgatan', 'Svärdvägen', NULL);
+
+-- 14.
+SELECT distance, km_price, (distance * km_price)
+AS Cost
+FROM cars, orders
+WHERE ordernr = '3' AND regnr = 'MER-013';
+
+-- 15.
+SELECT passenger_seats
+FROM cars
+WHERE regnr = 'DFE-431';
+
+-- 16.
+SELECT bagage
+FROM cars
+WHERE regnr = 'QKE-445';
+
+-- 17.
+INSERT INTO orders VALUES(NULL, '19991030-7637', 'LAE-987', '2020-09-11 15:00', '2020-09-12 14:59', 45, 'Storgatan', 'Lillgatan', '1998-10-25');

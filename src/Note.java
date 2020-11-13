@@ -1,19 +1,41 @@
 public class Note {
 
     private int id;
-    private String date;
+    private long date;
     private String title;
     private String  content;
     private Boolean archived;
+    private String imageUrl;
 
     public Note() {  }
 
-    public Note(int id, String date, String title, String content, Boolean archived) {
+
+    public Note(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public Note(long date, String title, String content) {
+        this.date = date;
+        this.title = title;
+        this.content = content;
+    }
+
+    public Note(int id, long date, String title, String content, Boolean archived) {
         this.id = id;
         this.date = date;
         this.title = title;
         this.content = content;
         this.archived = archived;
+    }
+
+    public Note(int id, long date, String title, String content, Boolean archived, String imageUrl) {
+        this.id = id;
+        this.date = date;
+        this.title = title;
+        this.content = content;
+        this.archived = archived;
+        this.imageUrl = imageUrl;
     }
 
     public int getId() {
@@ -24,11 +46,11 @@ public class Note {
         this.id = id;
     }
 
-    public String getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
@@ -56,14 +78,23 @@ public class Note {
         this.archived = archived;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "Note{" +
                 "id=" + id +
-                ", date='" + date + '\'' +
+                ", date=" + date +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", archived=" + archived +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }
