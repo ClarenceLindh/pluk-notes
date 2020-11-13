@@ -20,7 +20,7 @@ body{
   height: auto;
 	
   /* Set up positioning */
-  position: fixed;
+
   top: 0;
   left: 0;
   background-repeat: no-repeat;
@@ -135,10 +135,10 @@ main {
 }
 .container .header {
     background: rgba(43, 35, 35, 0.637);
-    padding: 2px;
     cursor: pointer;
     font-weight: bold;
 }
+
 .container .content {
     display: none;
     padding : 5px;
@@ -151,7 +151,7 @@ main {
     font-weight: bold;
     width: 100%; 
     border: white;
-    background-color: rgba(0, 0, 0, 0.342);
+    background-color: rgba(0, 0, 0, 0.658);
     background-repeat: repeat;
     background-attachment: scroll;
     background-position: 0% 0%;
@@ -186,15 +186,17 @@ a{
     box-shadow: 0 0 10px 0 rgba(243, 240, 240, 0.479);
 }
 
-#notesList>ul>.container>.note>.image>embed{
-    
-    width: 25%;
-     
- }
+
+ div.image > embed{
+    width: 90%;
+    object-fit: contain;
+
+    height: 65vh;
+}
 
  #notesList .header{
      margin-bottom:1%;
-     padding: 1vh 1vw;
+     padding: 2vh 2vw;
      counter-reset: white;
  }
  #notesList .header>span{

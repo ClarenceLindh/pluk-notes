@@ -11,9 +11,23 @@ body{
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-   
+    
+    min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+    
+  }
   
-}
+
 
 
 *{
@@ -62,7 +76,7 @@ ul {
   }
 
 .header-top {
-    background-color: black;
+    
     color: white;
     display: flex;
     justify-content: center;
@@ -74,15 +88,16 @@ ul {
 
 
 
-.header-top>a{
+.header-top>#themeBtn{
     position: absolute;
     top: 0px;
     right: 0px;
+    margin: 1vh 1vw;
 }
 
 .search{
     color: white;
-    background-color: rgba(231, 216, 216, 0.418);
+    background-color: rgba(15, 14, 14, 0.863);
     border: rgb(0, 0, 0);
     padding-bottom: 5px;
     padding-top: 5px;
@@ -92,7 +107,7 @@ ul {
 .header-bottom {
     display: flex;
     justify-content: center;
-    background-color: black;
+    
     color: white;
     padding-bottom: 2%;
     
@@ -104,6 +119,7 @@ ul {
 
 .note-title {
     font-weight: bold;
+    text-decoration: underline
 }
 
 main {
@@ -111,7 +127,7 @@ main {
 }
 .container {
     width:100%;
-    border:1px solid #000000;
+    border:1px solid #00000065;
 }
 .container div {
     width:100%;
@@ -135,7 +151,7 @@ main {
     font-weight: bold;
     width: 100%; 
     border: white;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.342);
     background-repeat: repeat;
     background-attachment: scroll;
     background-position: 0% 0%;
@@ -170,3 +186,30 @@ a{
     box-shadow: 0 0 10px 0 rgba(243, 240, 240, 0.479);
 }
 
+
+ div.image > embed{
+    width: 90%;
+    object-fit: contain;
+
+    height: 65vh;
+}
+
+ #notesList .header{
+     margin-bottom:1%;
+     padding: 1vh 1vw;
+     counter-reset: white;
+ }
+ #notesList .header>span{
+     color:rgba(255, 255, 255, 0.603);
+ }
+
+ #themeBtn{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+    outline: inherit;
+    
+ }
