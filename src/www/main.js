@@ -3,6 +3,7 @@ let notes = [];
 var count = 1;      
 let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
+let imgUrll=null;
 
 themeButton.addEventListener("click",function Function(){
     myFunction();

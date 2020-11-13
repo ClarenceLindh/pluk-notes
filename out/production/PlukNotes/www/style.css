@@ -97,11 +97,7 @@ ul {
 
 .search{
     color: white;
-<<<<<<< HEAD
     background-color: rgba(15, 14, 14, 0.863);
-=======
-    background-color: rgba(231, 216, 216, 0.418);
->>>>>>> Editfileb2
     border: rgb(0, 0, 0);
     padding-bottom: 5px;
     padding-top: 5px;
@@ -208,11 +204,10 @@ a{
     align-items: center;
 }
 
-div.image > embed{
-    width: 90%;
-    object-fit: contain;
-
-<<<<<<< HEAD
+div.image {
+    height: 100%;
+    width: 100%;
+}
 
  div.image > embed{
     width: 90%;
@@ -227,7 +222,7 @@ div.image > embed{
      counter-reset: white;
  }
  #notesList .header>span{
-     color:rgba(255, 255, 255, 0.603);
+     color:white;
  }
 
  #themeBtn{
@@ -240,7 +235,3 @@ div.image > embed{
     outline: inherit;
     
  }
-=======
-    height: 65vh;
-}
->>>>>>> Editfileb2
