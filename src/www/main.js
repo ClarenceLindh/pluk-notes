@@ -3,6 +3,7 @@ let notes = [];
 
 let editNoteId = null;
 
+let editimageUrl = null;
 
 
 indexRenderNotes();
@@ -62,7 +63,7 @@ async function renderNotes() {
             <div class="note-date">${date}</div>
             <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br><br>
-            <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
+            <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
             </li></div>
             `;
 
@@ -102,11 +103,11 @@ async function renderEditNote(id) {
             <button onclick="renderNotes();">Back</button>
             <h3>Edit Note!</h3>
             <form onsubmit="updateNote(event)">                
-                <div class="image"><img src="${note.imageUrl}" alt="note-image"></div><br>
+                <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div><br>
                 <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
                 <br> 
                 <input type ="text" id="content" Value="${note.content}"><br><br>              
-                <input type="file" accept="image/*" placeholder="Select image">              
+                <input type="file" Value="${note.imageUrl}" accept="image/*" placeholder="Select image">              
                 <button type="submit">Update note</button>
               </form>  </div>  
             </li>`;
@@ -118,10 +119,15 @@ async function renderEditNote(id) {
        
 }
 
+
+
 function saveNoteId(editButton) {
    editNoteId = $(editButton).parent().attr('id');
    console.log('Id for note to edit:', editNoteId);
-   renderEditNote(editNoteId);   
+   renderEditNote(editNoteId);
+
+   editimageUrl =$(editButton).attr("id");
+   console.log("id for imageUrl", editimageUrl);
 }
 
 
@@ -210,7 +216,8 @@ async function createNote(e) {
 
 async function updateNote(e) {
     e.preventDefault();
-    let imageUrl = null;
+
+    let imageUrl = editimageUrl;
 
     let files = document.querySelector('input[type=file]').files;
     console.log('How many files are uploaded: ', files.length);
