@@ -40,16 +40,6 @@ public class Main {
             res.send("post OK");
         });
 
-        app.delete("/rest/notes", (req, res) -> {
-            Note note = (Note) req.getBody(Note.class);
-
-            System.out.println(note.toString());
-
-            db.deleteNote(note);
-
-            res.send("delete OK");
-        });
-
         app.post("/api/file-upload", (req, res) -> {
             String imageUrl = null;
 
@@ -65,6 +55,19 @@ public class Main {
             // return "/uploads/image-name.jpg
             res.send(imageUrl);
         });
+
+
+        app.delete("/rest/notes", (req, res) -> {
+            Note note = (Note) req.getBody(Note.class);
+
+            System.out.println(note.toString());
+
+            db.deleteNote(note);
+
+            res.send("delete OK");
+        });
+
+
 
         app.put("/rest/notes", (req, res) -> {
             Note note = (Note) req.getBody(Note.class);

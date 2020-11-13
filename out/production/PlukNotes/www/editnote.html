@@ -10,9 +10,9 @@
         <header>
             <div class="header-top">
                
-                    <h1> <a href="index.html">PlukNotes</a></h1>
-                   
-                       <a href="editnoteCoal.html">Change Theme!</a>
+                    <h1 onclick="myFunction()"> <a href="index.html">PlukNotes</a></h1>
+                    <button id="themeBtn" type="button" >Set background image</button>
+                     
                     
                     <h2>Let's PLUKEE these notes!</h2>
                  </div>
@@ -26,7 +26,7 @@
                     <input type="text" id="title" placeholder="Write title..."><br>                
                     <br> 
                     <textarea id="content" placeholder="Write content..." cols="30" rows="4"></textarea><br><br>              
-                    <input type="file" accept="image/*" placeholder="Select image">              
+                    <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
                     <button type="submit">Create Note</button>
                  
                   </form>
