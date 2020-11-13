@@ -158,24 +158,34 @@ async function deleteNote(removeButton){
 async function createNote(e) {
     e.preventDefault();
 
-    let files = document.querySelector('input[type=file]').files;
-    let formData = new FormData();
+    let imageUrl = null;
 
-    for(let file of files) {
+    let files = document.querySelector('input[type=file]').files;
+
+    console.log('How many files are uploaded: ', files.length);
+
+    if (!files.length == 0) {
+
+        let formData = new FormData();
+
+        for(let file of files) {
 
         formData.append('files', file, file.name);
 
-    }
+        }
 
-    let uploadResult = await fetch('/api/file-upload', {
+        let uploadResult = await fetch('/api/file-upload', {
 
         method: 'POST',
 
         body: formData
 
-    });
+        });
 
-    let imageUrl = await uploadResult.text();
+        imageUrl = await uploadResult.text();
+
+    }
+
     console.log('URL', imageUrl);
 
     let titleInput = document.querySelector("#title");
@@ -195,13 +205,17 @@ async function createNote(e) {
     notes.push(note);
 
     console.log(await result.text())
-    renderNotes()
+    
 }
 
 async function updateNote(e) {
     e.preventDefault();
+    let imageUrl = null;
 
     let files = document.querySelector('input[type=file]').files;
+    console.log('How many files are uploaded: ', files.length);
+    if (!files.length == 0) {
+
     let formData = new FormData();
 
     for(let file of files) {
@@ -218,7 +232,10 @@ async function updateNote(e) {
 
     });
 
-   let imageUrl = await uploadResult.text();
+   imageUrl = await uploadResult.text();
+
+} 
+
    console.log('URL', imageUrl);
 
     let titleInput = document.querySelector("#title");
