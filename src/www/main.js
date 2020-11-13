@@ -2,7 +2,8 @@
 let notes = [];
 
 let editNoteId = null;
-let bajskorv= null;
+let imgUrll= null;
+
 
 
 
@@ -47,7 +48,7 @@ async function getNotes() {
 async function renderNotes() {
     await getNotes();
     let noteList = document.querySelector("#notesList ul");
-    console.log("bajskorv",bajskorv);
+    console.log("nuvarande url",imgUrll);
 
     noteList.innerHTML = "";
     
@@ -68,30 +69,39 @@ async function renderNotes() {
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
          
-            
+            <script> 
+             </script>
             </li></div>
             `;
 
             noteList.innerHTML += noteLi;
+            console.log("nuvarande url",imgUrll);
     }
 
    // <button id="${note.imageUrl}" onclick="saveNoteId2(this)">bhas</button>
 
-    var ParentImage = document.querySelectorAll(".imgParent");
-    for (var index = 0; index <ParentImage.length; index++){
+    
+   
+   var ParentImage = document.querySelectorAll(".imgParent");// Tar alla img.parent klasser och sätter in i variablen Parent Image
+    for (var index = 0; index <ParentImage.length; index++){ // Loopar igenom alla parent.image 
         console.log("fsdsfdf",ParentImage[0]);
-     ParentImage[index].addEventListener("click", function(){
+     ParentImage[index].addEventListener("click", function(){ //lyssnar på en specifik parentimage och gör sedna koden på just den
          this.classList.toggle("active");
       });
 
     
 
 
-    ParentImage[index].querySelector("button").addEventListener("click",
-      function(){
-        if(bajskorv=="null"){
+    ParentImage[index].querySelector("button").addEventListener("click", //tar en specifik knapp fårn parentimage och kör en funktion
+      function testing(){
+
+        
+
+
+
+        if(imgUrll=="null"){
          this.closest(".imgParent").remove();
-         console.log("detta funkar kanske?",bajskorv);}else (console.log("bajs"));
+         console.log("bild element tas bort");}else (console.log("anteckningens url är ej  = null"));
     });
     }
  
@@ -197,10 +207,10 @@ function saveNoteId(editButton) {
 }
 
 function saveNoteId2(editButton) {
-  // bajskorv = $(editButton).parent().attr('id');
+  // imgUrll = $(editButton).parent().attr('id');
     
-    bajskorv = $(editButton).attr('id');
-    console.log('Id for note to edit:', bajskorv);
+  imgUrll = $(editButton).attr('id');
+    console.log('Id for note to edit:', imgUrll);
    
     
  }
