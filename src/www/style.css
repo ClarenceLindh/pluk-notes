@@ -170,3 +170,17 @@ a{
     box-shadow: 0 0 10px 0 rgba(243, 240, 240, 0.479);
 }
 
+#notesList>ul>.container>.note>.image>embed{
+    
+    width: 25%;
+     
+ }
+
+ #notesList .header{
+     margin-bottom:1%;
+     padding: 1vh 1vw;
+     counter-reset: white;
+ }
+ #notesList .header>span{
+     color:rgba(255, 255, 255, 0.603);
+ }
