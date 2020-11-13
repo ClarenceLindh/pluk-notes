@@ -200,7 +200,7 @@ a{
      counter-reset: white;
  }
  #notesList .header>span{
-     color:rgba(255, 255, 255, 0.603);
+     color:white;
  }
 
  #themeBtn{
