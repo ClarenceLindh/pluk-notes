@@ -59,10 +59,10 @@ async function renderNotes() {
             <li class="note" id="${note.id}"style="display:none;">
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
-            <div class="imgParent"><div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div></div>
+            <div class="imgParent"> <button >skit</button><div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div></div>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
-            <button id="testdel" onclick="rensaskit(this)">DELETE SHIT!</button>
+            
             </li></div>
             `;
 
@@ -70,14 +70,26 @@ async function renderNotes() {
     }
 
 
-    async function rensaskit(e){
+    
+
+ var allSubjectName = document.querySelectorAll(".imgParent");
+   for (var index = 0; index <allSubjectName.length; index++){
+      allSubjectName[index].addEventListener("click", function(){
+         this.classList.toggle("active");
+      });
+      allSubjectName[index].querySelector("button").addEventListener("click",
+      function(){
+         this.closest(".imgParent").remove();
+      });
+   }
+
+/*
+
+async function rensaskit(){
     let noteId = $(e).parent();
      noteId.removeChild(image);
 
     renderNotes()
-}
-
-/*
     let button2 = document.getElementById('testdel');
 
 button2.addEventListener("click", function removeImageifnull(e){
