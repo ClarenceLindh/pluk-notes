@@ -2,6 +2,7 @@
 let notes = [];
 
 let editNoteId = null;
+let bajskorv= null;
 
 
 
@@ -59,9 +60,10 @@ async function renderNotes() {
             <li class="note" id="${note.id}"style="display:none;">
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
-            <div class="imgParent"> <button >skit</button><div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div></div>
+            <div class="imgParent"> <button>skit</button><div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div></div>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
+            <button id="${note.imageUrl}" onclick="saveNoteId2(this)">bhas</button>
             
             </li></div>
             `;
@@ -69,19 +71,20 @@ async function renderNotes() {
             noteList.innerHTML += noteLi;
     }
 
-
     
 
- var allSubjectName = document.querySelectorAll(".imgParent");
-   for (var index = 0; index <allSubjectName.length; index++){
-      allSubjectName[index].addEventListener("click", function(){
+    var ParentImage = document.querySelectorAll(".imgParent");
+    for (var index = 0; index <ParentImage.length; index++){
+     ParentImage[index].addEventListener("click", function(){
          this.classList.toggle("active");
       });
-      allSubjectName[index].querySelector("button").addEventListener("click",
+    ParentImage[index].querySelector("button").addEventListener("click",
       function(){
          this.closest(".imgParent").remove();
       });
-   }
+    }
+ 
+    
 
 /*
 
@@ -109,6 +112,22 @@ button2.addEventListener("click", function removeImageifnull(e){
     }
     */
 
+    /*
+function removeImageifnull(){
+var image = document.querySelector(".image");
+var imgParent = document.querySelector(".imgParent");
+var emb = document.querySelector (".em");
+var unknown = "(unknown)";
+console.log(emb);
+
+if (emb === (unknown)){
+    imgParent.removeChild (image);
+}
+//imgParent.removeChild(image);
+console.log(image);
+} 
+*/
+
     $(".header").click(function () {
        
         $header = $(this);
@@ -126,21 +145,7 @@ button2.addEventListener("click", function removeImageifnull(e){
     
     });
 }
-/*
-function removeImageifnull(){
-var image = document.querySelector(".image");
-var imgParent = document.querySelector(".imgParent");
-var emb = document.querySelector (".em");
-var unknown = "(unknown)";
-console.log(emb);
 
-if (emb === (unknown)){
-    imgParent.removeChild (image);
-}
-//imgParent.removeChild(image);
-console.log(image);
-} 
-*/
 
 
 async function renderEditNote(id) {
@@ -180,6 +185,14 @@ function saveNoteId(editButton) {
    renderEditNote(editNoteId);   
 }
 
+function saveNoteId2(editButton) {
+  // bajskorv = $(editButton).parent().attr('id');
+    
+    bajskorv = $(editButton).attr('id');
+    console.log('Id for note to edit:', bajskorv);
+    
+ }
+ 
 
 async function confirmClick(removeButton){
     //let noteId = $(removeButton).parent().attr('id');
