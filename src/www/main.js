@@ -11,6 +11,7 @@ themeButton.addEventListener("click",function Function(){
 themeButton.addEventListener("dblclick",function Function(){
     myFunction2();
 });
+let editimageUrl = null;
 
 
 
@@ -110,7 +111,7 @@ async function renderNotes() {
              <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
              </div>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
-            <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
+            <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
          
             <script> 
              </script>
@@ -243,10 +244,15 @@ async function renderEditNote(id) {
        
 }
 
+
+
 function saveNoteId(editButton) {
    editNoteId = $(editButton).parent().attr('id');
    console.log('Id for note to edit:', editNoteId);
-   renderEditNote(editNoteId);   
+   renderEditNote(editNoteId);
+
+   editimageUrl =$(editButton).attr("id");
+   console.log("id for imageUrl", editimageUrl);
 }
 
 function saveNoteId2(editButton) {
@@ -344,7 +350,8 @@ async function createNote(e) {
 
 async function updateNote(e) {
     e.preventDefault();
-    let imageUrl = null;
+
+    let imageUrl = editimageUrl;
 
     let files = document.querySelector('input[type=file]').files;
     console.log('How many files are uploaded: ', files.length);
