@@ -7,6 +7,9 @@ let themeButton = document.getElementById('themeBtn')
 themeButton.addEventListener("click",function Function(){
     myFunction();
 });
+themeButton.addEventListener("dblclick",function Function(){
+    myFunction2();
+});
 
 
 
@@ -15,6 +18,22 @@ function myFunction() {
     if(count == 0){
     
         document.body.style.backgroundImage =" url('image/coal.jpg')";
+       count++; 
+        console.log(count);} 
+        
+        else { document.body.style.backgroundImage =null;
+count=0;
+console.log(count)};
+
+
+  };
+
+  
+function myFunction2() {
+  
+    if(count == 0){
+    
+        document.body.style.backgroundImage =" url('image/0000.jpg')";
        count++; 
         console.log(count);} 
         
@@ -80,12 +99,12 @@ async function renderNotes() {
         
             let noteLi = `
             <div class="container">
-            <div class="header"><span>${note.title}</span></div>
+            <div class="header"><span>${note.title}</span></div> 
             <li class="note" id="${note.id}"style="display:none;">
-            <div class="note-title">${note.title}</div>
+            <div class="note-title">${note.title}</div><br>
             <div class="note-content">${note.content}</div><br>
-            <div class="note-date">${date}</div>
             <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
+            <div class="note-date">${date}</div><br>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
             </li></div>
