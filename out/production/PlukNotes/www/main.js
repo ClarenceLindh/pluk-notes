@@ -103,8 +103,13 @@ async function renderNotes() {
             <li class="note" id="${note.id}"style="display:none;">
             <div class="note-title">${note.title}</div><br>
             <div class="note-content">${note.content}</div><br>
+<<<<<<< HEAD
             <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
             <div class="note-date">${date}</div><br>
+=======
+            <div class="note-date">${date}</div>
+            <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
+>>>>>>> Editfileb2
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br><br>
             <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
             </li></div>
