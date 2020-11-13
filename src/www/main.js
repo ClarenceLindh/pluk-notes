@@ -96,14 +96,16 @@ async function renderNotes() {
 
     noteList.innerHTML = "";
     
-    
+
     for(let note of notes) {
         let date = new Date(note.date).toLocaleString();
             
             let noteLi = `
             <div class="container">
+
             <div class="header"><span>${note.title}</span></div> 
             <li class="note" id="${note.id}"style="display:none;">
+
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
             <div class="imgParent">
@@ -238,10 +240,12 @@ async function renderEditNote(id) {
             </li>`;
 
             noteList.innerHTML += noteLi;
+
             }
         
     }
        
+
 }
 
 
@@ -399,4 +403,5 @@ async function updateNote(e) {
     console.log(await result.text())
     renderNotes();
 }
+
 

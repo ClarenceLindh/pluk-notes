@@ -38,7 +38,7 @@ body{
 
 ul {
     margin: 0;
-    padding: 0;
+    padding:0;
   }
 
 .deleteButton {
@@ -155,6 +155,29 @@ main {
     font-size: 15px;
 }
 
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+.container {
+    width:100%;
+    border:1px solid #000000;
+}
+.container div {
+    width:100%;
+}
+.container .header {
+    background-color:#5e53f7;
+    padding: 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.container .content {
+    display: none;
+    padding : 5px;
+}
+
 .addNoteButton {
     height:50px; 
     font-size: 18px;
@@ -169,6 +192,7 @@ main {
     position: fixed;
     bottom: 0pt;
     left: 0pt;
+
     cursor: pointer;
 }
 
@@ -235,3 +259,4 @@ div.image {
     outline: inherit;
     
  }
+

@@ -94,6 +94,7 @@ async function renderNotes() {
 
     noteList.innerHTML = "";
     
+
     
     for(let note of notes) {
         let date = new Date(note.date).toLocaleString();
@@ -130,6 +131,7 @@ async function renderNotes() {
      ParentImage[index].addEventListener("click", function(){ //lyssnar på en specifik parentimage och gör sedna koden på just den
          this.classList.toggle("active");
       });
+
 
     
 
@@ -218,6 +220,7 @@ async function renderEditNote(id) {
     
     for(let note of notes) {
 
+
         if (id == note.id) {
             
             let noteLi = `
@@ -246,6 +249,7 @@ function saveNoteId(editButton) {
    editNoteId = $(editButton).parent().attr('id');
    console.log('Id for note to edit:', editNoteId);
    renderEditNote(editNoteId);   
+
 }
 
 function saveNoteId2(editButton) {
@@ -284,6 +288,7 @@ async function deleteNote(removeButton){
 
     renderNotes()
 }
+
 
 
 
@@ -391,4 +396,5 @@ async function updateNote(e) {
     console.log(await result.text())
     renderNotes();
 }
+
 
