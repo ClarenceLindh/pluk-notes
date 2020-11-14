@@ -16,6 +16,39 @@ public class Main {
 
 
 
+app.get("/rest/numbers",(request, response) -> {
+    List<Numbers>numbers = db.getNumbers();
+    response.json(numbers);
+});
+        app.post("/rest/numbers", (req, res) -> {
+            Numbers numbers = (Numbers) req.getBody(Numbers.class);
+
+            System.out.println(numbers.toString());
+
+            db.createNumber(numbers);
+
+            res.send("post OK");
+        });
+        app.delete("/rest/numbers", (req, res) -> {
+            Numbers numbers = (Numbers) req.getBody(Numbers.class);
+
+            System.out.println(numbers.toString());
+
+            db.deleteNumber(numbers);
+
+            res.send("delete OK");
+        });
+        app.put("/rest/numbers", (req, res) -> {
+            Numbers numbers = (Numbers) req.getBody(Numbers.class);
+
+            System.out.println("(Put: " + numbers.toString());
+
+            db.updateNumber(numbers);
+
+            res.send("Numbers updated OK");
+        });
+
+
         app.get("/rest/notes", (req, res) -> {
             List<Note>notes = db.getNotes();
 
@@ -56,7 +89,6 @@ public class Main {
             res.send(imageUrl);
         });
 
-
         app.delete("/rest/notes", (req, res) -> {
             Note note = (Note) req.getBody(Note.class);
 
@@ -66,8 +98,6 @@ public class Main {
 
             res.send("delete OK");
         });
-
-
 
         app.put("/rest/notes", (req, res) -> {
             Note note = (Note) req.getBody(Note.class);

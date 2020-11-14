@@ -19,6 +19,59 @@ public class Database {
             throwables.printStackTrace();
         }
     }
+    public List<Numbers> getNumbers(){
+    List<Numbers> numbers= null;
+    try {
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM numbers");
+        ResultSet rs = stmt.executeQuery();
+
+        Numbers[] numbersFromRS = (Numbers[]) Utils.readResultSetToObject(rs, Numbers[].class);
+        numbers= List.of(numbersFromRS);
+    } catch (SQLException throwables) {
+        throwables.printStackTrace();
+    } catch (JsonProcessingException e) {
+        e.printStackTrace();
+    }
+
+    return numbers;
+
+}
+    public void createNumber(Numbers number){
+        try{
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO numbers(number) VALUES (?)");
+            stmt.setInt(1, number.getNumber());
+            stmt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void deleteNumber(Numbers number) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM numbers WHERE id = ?");
+            stmt.setInt(1, number.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+    }
+    public void updateNumber(Numbers number) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("UPDATE numbers SET number = ?");
+
+            stmt.setInt(1, number.getNumber());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+
 
     public List<Note> getNotes() {
         List<Note> notes = null;
