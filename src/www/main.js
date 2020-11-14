@@ -5,6 +5,8 @@ let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
 let imgUrll=null;
 
+
+
 themeButton.addEventListener("click",function Function(){
     myFunction();
 });
@@ -99,7 +101,15 @@ async function renderNotes() {
 
     for(let note of notes) {
         let date = new Date(note.date).toLocaleString();
-            
+        let noteLi = `
+        <script>saveNoteId2(this)</script>
+        `;
+        noteList.innerHTML += noteLi;
+        console.log("nuvarande url",imgUrll);
+        imgUrll=note.imageUrl;
+
+
+        if(imgUrll==null){
             let noteLi = `
             <div class="container">
 
@@ -108,20 +118,39 @@ async function renderNotes() {
 
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
-            <div class="imgParent">
-             <button id="${note.imageUrl}" onclick="saveNoteId2(this)">skit</button>
-             <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
-             </div>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
             <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
          
-            <script> 
-             </script>
+           
             </li></div>
             `;
-
             noteList.innerHTML += noteLi;
-            console.log("nuvarande url",imgUrll);
+            console.log("nuvarande url",imgUrll);}
+            
+            else{
+                let noteLi = `
+                <div class="container">
+    
+                <div class="header"><span>${note.title}</span></div> 
+                <li class="note" id="${note.id}"style="display:none;">
+    
+                <div class="note-content">${note.content}</div><br>
+                <div class="note-date">${date}</div>
+                <div class="imgParent">
+                 <button id="${note.imageUrl}" onclick="saveNoteId2(this)">skit</button>
+                 <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
+                 </div>
+                <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
+                <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
+             
+                </li></div>
+                `;
+                noteList.innerHTML += noteLi;
+                console.log("nuvarande url",imgUrll);
+                
+            }
+
+           
     }
 
    // <button id="${note.imageUrl}" onclick="saveNoteId2(this)">bhas</button>

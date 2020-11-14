@@ -3,6 +3,7 @@ let notes = [];
 var count = 1;      
 let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
+let imgUrll=null;
 
 themeButton.addEventListener("click",function Function(){
     myFunction();
@@ -10,6 +11,7 @@ themeButton.addEventListener("click",function Function(){
 themeButton.addEventListener("dblclick",function Function(){
     myFunction2();
 });
+let editimageUrl = null;
 
 
 
@@ -95,30 +97,51 @@ async function renderNotes() {
     noteList.innerHTML = "";
     
 
-    
     for(let note of notes) {
         let date = new Date(note.date).toLocaleString();
-            
+            if(imgUrll=="null"){
             let noteLi = `
             <div class="container">
+
             <div class="header"><span>${note.title}</span></div> 
             <li class="note" id="${note.id}"style="display:none;">
+
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
-            <div class="imgParent">
-             <button id="${note.imageUrl}" onclick="saveNoteId2(this)">skit</button>
-             <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
-             </div>
             <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
-            <button class="editButton" onclick="saveNoteId(this)">Edit</button><br>
+            <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
          
             <script> 
              </script>
             </li></div>
             `;
-
             noteList.innerHTML += noteLi;
-            console.log("nuvarande url",imgUrll);
+            console.log("nuvarande url",imgUrll);}else{
+                let noteLi = `
+                <div class="container">
+    
+                <div class="header"><span>${note.title}</span></div> 
+                <li class="note" id="${note.id}"style="display:none;">
+    
+                <div class="note-content">${note.content}</div><br>
+                <div class="note-date">${date}</div>
+                <div class="imgParent">
+                 <button id="${note.imageUrl}" onclick="saveNoteId2(this)">skit</button>
+                 <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
+                 </div>
+                <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
+                <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
+             
+                <script> 
+                 </script>
+                </li></div>
+                `;
+                noteList.innerHTML += noteLi;
+                console.log("nuvarande url",imgUrll);
+                
+            }
+
+           
     }
 
    // <button id="${note.imageUrl}" onclick="saveNoteId2(this)">bhas</button>
@@ -131,7 +154,6 @@ async function renderNotes() {
      ParentImage[index].addEventListener("click", function(){ //lyssnar på en specifik parentimage och gör sedna koden på just den
          this.classList.toggle("active");
       });
-
 
     
 
@@ -220,7 +242,6 @@ async function renderEditNote(id) {
     
     for(let note of notes) {
 
-
         if (id == note.id) {
             
             let noteLi = `
@@ -239,17 +260,23 @@ async function renderEditNote(id) {
             </li>`;
 
             noteList.innerHTML += noteLi;
+
             }
         
     }
        
+
 }
+
+
 
 function saveNoteId(editButton) {
    editNoteId = $(editButton).parent().attr('id');
    console.log('Id for note to edit:', editNoteId);
-   renderEditNote(editNoteId);   
+   renderEditNote(editNoteId);
 
+   editimageUrl =$(editButton).attr("id");
+   console.log("id for imageUrl", editimageUrl);
 }
 
 function saveNoteId2(editButton) {
@@ -288,7 +315,6 @@ async function deleteNote(removeButton){
 
     renderNotes()
 }
-
 
 
 
@@ -348,7 +374,8 @@ async function createNote(e) {
 
 async function updateNote(e) {
     e.preventDefault();
-    let imageUrl = null;
+
+    let imageUrl = editimageUrl;
 
     let files = document.querySelector('input[type=file]').files;
     console.log('How many files are uploaded: ', files.length);
