@@ -61,9 +61,9 @@ ul {
     font-size: 18px;
     transition: 0.3s;
 
-    border: 2px solid gray;
+    border: 2px solid rgb(3, 2, 2);
     border-radius: 5px;
-    box-shadow: 0 0 10px 0 gray;
+   
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -241,7 +241,7 @@ div.image {
 }
 
  #notesList .header{
-     margin-bottom:1%;
+     margin-top:1%;
      padding: 2vh 2vw;
      counter-reset: white;
  }
@@ -260,3 +260,16 @@ div.image {
     
  }
 
+ .myButton{
+  background-color: white;
+    cursor:pointer;
+    
+    
+
+  }
+
+  .myButton:active {
+    
+    background-color:rgb(95, 94, 94);
+  }
+  

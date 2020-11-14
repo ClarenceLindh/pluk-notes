@@ -115,11 +115,10 @@ async function renderNotes() {
 
             <div class="header"><span>${note.title}</span></div> 
             <li class="note" id="${note.id}"style="display:none;">
-
             <div class="note-content">${note.content}</div><br>
             <div class="note-date">${date}</div>
-            <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
-            <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
+            <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button><br>
+            <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
          
            
             </li></div>
@@ -135,8 +134,8 @@ async function renderNotes() {
                 <div class="note-content">${note.content}</div><br>
                 <div class="note-date">${date}</div>
                  <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
-                <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
-                <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
+                 <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button><br>
+                 <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
                 </li></div>
                 `;
                 noteList.innerHTML += noteLi;
