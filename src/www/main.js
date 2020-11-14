@@ -153,52 +153,7 @@ async function renderNotes() {
            
     }
 
-   // <button id="${note.imageUrl}" onclick="saveNoteId2(this)">bhas</button>
 
-    
-   
-
-/*
-
-async function rensaskit(){
-    let noteId = $(e).parent();
-     noteId.removeChild(image);
-
-    renderNotes()
-    let button2 = document.getElementById('testdel');
-
-button2.addEventListener("click", function removeImageifnull(e){
-    vadsomhelst(e);
-    });
-
-    async function vadsomhelst(e){
-    var image = document.querySelector(".image");
-    var imgParent = document.querySelector(".imgParent");
-    var emb = document.querySelector (".em");
-    var unknown = "(unknown)";
-    console.log(emb);
-
-    imgParent.removeChild(image);
-    console.log(image);
-    console.log(e);
-    }
-    */
-
-    /*
-function removeImageifnull(){
-var image = document.querySelector(".image");
-var imgParent = document.querySelector(".imgParent");
-var emb = document.querySelector (".em");
-var unknown = "(unknown)";
-console.log(emb);
-
-if (emb === (unknown)){
-    imgParent.removeChild (image);
-}
-//imgParent.removeChild(image);
-console.log(image);
-} 
-*/
 
     $(".header").click(function () {
        
