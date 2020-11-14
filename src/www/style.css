@@ -273,3 +273,9 @@ div.image {
     background-color:rgb(95, 94, 94);
   }
   
+  .image>.em{
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+    
+  }
