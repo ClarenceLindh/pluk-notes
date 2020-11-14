@@ -157,30 +157,6 @@ async function renderNotes() {
 
     
    
-   var ParentImage = document.querySelectorAll(".imgParent");// Tar alla img.parent klasser och sätter in i variablen Parent Image
-    for (var index = 0; index <ParentImage.length; index++){ // Loopar igenom alla parent.image 
-        console.log("fsdsfdf",ParentImage[0]);
-     ParentImage[index].addEventListener("click", function(){ //lyssnar på en specifik parentimage och gör sedna koden på just den
-         this.classList.toggle("active");
-      });
-
-    
-
-
-    ParentImage[index].querySelector("button").addEventListener("click", //tar en specifik knapp fårn parentimage och kör en funktion
-      function testing(){
-
-        
-
-
-
-        if(imgUrll=="null"){
-         this.closest(".imgParent").remove();
-         console.log("bild element tas bort");}else (console.log("anteckningens url är ej  = null"));
-    });
-    }
- 
-    
 
 /*
 
