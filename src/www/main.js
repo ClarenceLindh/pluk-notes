@@ -35,7 +35,7 @@ function myFunction() {
                 count=0;
                 document.body.style.backgroundImage =null;
             
-            }else count==0;
+            }else 
             console.log(" 5st count",count);
 
         };
@@ -343,6 +343,13 @@ async function updateNote(e) {
 
     console.log(await result.text())
     renderNotes();
+}
+
+async function getNumbers(){
+    let result = await fetch('/rest/numbers');
+    numbers = await result.json();
+    console.log(numbers);
+
 }
 
 
