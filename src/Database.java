@@ -60,7 +60,7 @@ public class Database {
     }
     public void updateNumber(Numbers number) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE numbers SET number = ?");
+            PreparedStatement stmt = conn.prepareStatement("UPDATE numbers SET number = ? WHERE id = 1");
 
             stmt.setInt(1, number.getNumber());
 

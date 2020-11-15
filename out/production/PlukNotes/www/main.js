@@ -1,5 +1,6 @@
 
 let notes = [];
+let numbers = [];
 var count = 0;      
 let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
@@ -352,4 +353,18 @@ async function getNumbers(){
 
 }
 
-
+async function updateNumber() {
+   
+    
+let currentNumber=count;
+let push = {
+    number:currentNumber.value
+}
+let result = await fetch("/rest/numbers", {
+    method: "PUT",
+    body: JSON.stringify(numbers)
+    
+});
+numbers.push(push);
+console.log(await result.text())
+}

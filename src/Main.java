@@ -41,7 +41,7 @@ app.get("/rest/numbers",(request, response) -> {
         app.put("/rest/numbers", (req, res) -> {
             Numbers numbers = (Numbers) req.getBody(Numbers.class);
 
-            System.out.println("(Put: " + numbers.toString());
+            System.out.println("Put: " + numbers);
 
             db.updateNumber(numbers);
 
