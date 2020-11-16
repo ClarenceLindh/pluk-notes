@@ -202,6 +202,7 @@ a{
 }
 .header-top>h1{
     margin-bottom: 1px;
+    cursor: pointer;
 }
 
 .addNoteContainer{
