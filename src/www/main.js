@@ -186,7 +186,7 @@ async function renderEditNote(id) {
                 <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div><br>
                 <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
                 <br> 
-                <input type ="text" id="content" Value="${note.content}"><br><br>              
+                <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
                 <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
                 <button type="submit">Update note</button>
               </form>  </div>  
@@ -197,7 +197,7 @@ async function renderEditNote(id) {
             }
         
     }
-       
+     //  <textarea id="content" cols="30" rows="4">${note.content}</textarea>
 
 }
 
