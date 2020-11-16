@@ -17,7 +17,8 @@ themeButton.addEventListener("click",function Function(){
 
 console.log("LETS RENDER2");
 
-function myFunction() {
+async function myFunction() {
+   await getNumbers();
   console.log(" 1st count",count);
   console.log("LETS RENDER3");
     if(count == 1){
@@ -41,11 +42,12 @@ function myFunction() {
                 document.body.style.backgroundImage =null;
                 updateNumber();
             
-            }else 
+            }else {
             console.log(" 5st count",count);
-            count++
+          
+            console.log(" AEEA"+count);
 
-        };
+        }};
 
   
 
@@ -55,6 +57,7 @@ indexRenderNotes();
 function indexRenderNotes() {
     if($('body').is('.index')){
         renderNotes();
+        getNumbers();
         myFunction();
     }
 }
@@ -197,7 +200,7 @@ async function renderEditNote(id) {
             }
         
     }
-       //<textarea id="content" cols="30" rows="4">${note.content}</textarea>
+     //  <textarea id="content" cols="30" rows="4">${note.content}</textarea>
 
 }
 
@@ -357,6 +360,10 @@ async function getNumbers(){
     let result = await fetch('/rest/numbers');
     numbers = await result.json();
     console.log(numbers);
+
+    count=numbers[0].number;
+
+    console.log("WE MADE IT HERE");
 
 }
 

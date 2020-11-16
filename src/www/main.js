@@ -8,22 +8,25 @@ let imgUrll=null;
 let editimageUrl = null;
 
 
-themeButton.addEventListener("click",function Function(){
+async function Function1(){
     console.log("LETS RENDER1");
-    myFunction();
-});
+    count++;
+    await updateNumber();
+    await myFunction();
+};
 
 
+myFunction();
 
-console.log("LETS RENDER2");
 
-function myFunction() {
+async function myFunction() {
+   await getNumbers();
   console.log(" 1st count",count);
   console.log("LETS RENDER3");
     if(count == 1){
         console.log(" 2st count",count);
         document.body.style.backgroundImage =" url('image/coal.jpg')";
-        updateNumber();
+        
        
        } 
         
@@ -31,7 +34,7 @@ function myFunction() {
             console.log(" 3st count",count);
             document.body.style.backgroundImage =" url('image/0000.jpg')";
        
-            updateNumber();
+            
         }
             
            
@@ -39,13 +42,14 @@ function myFunction() {
                 console.log(" 4st count",count);
                 count=0;
                 document.body.style.backgroundImage =null;
-                updateNumber();
+              
             
-            }else 
+            }else {
             console.log(" 5st count",count);
-            count++
+          
+            console.log(" AEEA"+count);
 
-        };
+        }};
 
   
 
@@ -55,7 +59,6 @@ indexRenderNotes();
 function indexRenderNotes() {
     if($('body').is('.index')){
         renderNotes();
-        myFunction();
     }
 }
 
@@ -357,6 +360,10 @@ async function getNumbers(){
     let result = await fetch('/rest/numbers');
     numbers = await result.json();
     console.log(numbers);
+
+    count=numbers[0].number;
+
+    console.log("WE MADE IT HERE");
 
 }
 
