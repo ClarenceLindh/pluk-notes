@@ -234,12 +234,6 @@ div.image {
     width: 100%;
 }
 
- div.image > embed{
-    width: 90%;
-    object-fit: contain;
-
-    height: 65vh;
-}
 
  #notesList .header{
      margin-top:1%;
@@ -277,6 +271,6 @@ div.image {
   .image>.em{
     width: 700px;
     height: 400px;
-    object-fit: cover;
+    object-fit: contain;
     
   }

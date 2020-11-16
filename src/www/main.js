@@ -300,7 +300,7 @@ async function createNote(e) {
     notes.push(note);
 
     console.log(await result.text())
-    
+    window.open ('index.html');
 }
 
 async function updateNote(e) {
