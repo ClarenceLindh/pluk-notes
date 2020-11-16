@@ -1,7 +1,7 @@
 
 let notes = [];
 let numbers = [];
-var count = "2";      
+var count="";     
 let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
 let imgUrll=null;
@@ -9,35 +9,41 @@ let editimageUrl = null;
 
 
 themeButton.addEventListener("click",function Function(){
-    count++;
+    console.log("LETS RENDER1");
     myFunction();
 });
 
 
 
-
+console.log("LETS RENDER2");
 
 function myFunction() {
   console.log(" 1st count",count);
-  
+  console.log("LETS RENDER3");
     if(count == 1){
         console.log(" 2st count",count);
         document.body.style.backgroundImage =" url('image/coal.jpg')";
+        updateNumber();
        
        } 
         
         else if (count==2){ 
             console.log(" 3st count",count);
             document.body.style.backgroundImage =" url('image/0000.jpg')";
-            console.log(count)}
+       
+            updateNumber();
+        }
+            
            
             else if (count == 3){
                 console.log(" 4st count",count);
                 count=0;
                 document.body.style.backgroundImage =null;
+                updateNumber();
             
             }else 
             console.log(" 5st count",count);
+            count++
 
         };
 
@@ -71,6 +77,7 @@ function search(needle){
             $(note).show();
         } else {
             $(note).hide();
+            
         }
     }
 }
@@ -368,3 +375,4 @@ let result = await fetch("/rest/numbers", {
 numbers.push(push);
 console.log(await result.text())
 }
+console.log("END OF MAIN.JS");
