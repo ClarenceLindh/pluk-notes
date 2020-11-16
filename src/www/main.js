@@ -1,57 +1,55 @@
 
 let notes = [];
-var count = 1;      
+let numbers = [];
+var count="";     
 let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
 let imgUrll=null;
-
-
-
-themeButton.addEventListener("click",function Function(){
-    myFunction();
-});
-themeButton.addEventListener("dblclick",function Function(){
-    myFunction2();
-});
 let editimageUrl = null;
 
 
+themeButton.addEventListener("click",function Function(){
+    console.log("LETS RENDER1");
+    myFunction();
+});
+
+
+
+console.log("LETS RENDER2");
 
 function myFunction() {
-  
-    if(count == 0){
-    
+  console.log(" 1st count",count);
+  console.log("LETS RENDER3");
+    if(count == 1){
+        console.log(" 2st count",count);
         document.body.style.backgroundImage =" url('image/coal.jpg')";
-       count++; 
-        console.log(count);} 
+        updateNumber();
+       
+       } 
         
-        else { document.body.style.backgroundImage =null;
-count=0;
-console.log(count)};
+        else if (count==2){ 
+            console.log(" 3st count",count);
+            document.body.style.backgroundImage =" url('image/0000.jpg')";
+       
+            updateNumber();
+        }
+            
+           
+            else if (count == 3){
+                console.log(" 4st count",count);
+                count=0;
+                document.body.style.backgroundImage =null;
+                updateNumber();
+            
+            }else 
+            console.log(" 5st count",count);
+            count++
 
-
-  };
-
-  
-function myFunction2() {
-  
-    if(count == 0){
-    
-        document.body.style.backgroundImage =" url('image/0000.jpg')";
-       count++; 
-        console.log(count);} 
-        
-        else { document.body.style.backgroundImage =null;
-count=0;
-console.log(count)};
-
-
-  };
+        };
 
   
 
-
-
+  
 indexRenderNotes();
 
 function indexRenderNotes() {
@@ -79,6 +77,7 @@ function search(needle){
             $(note).show();
         } else {
             $(note).hide();
+            
         }
     }
 }
@@ -169,7 +168,6 @@ async function renderNotes() {
 }
 
 
-
 async function renderEditNote(id) {
     await getNotes();
     let noteList = document.querySelector("#notesList ul");
@@ -202,8 +200,6 @@ async function renderEditNote(id) {
        
 
 }
-
-
 
 function saveNoteId(editButton) {
    editNoteId = $(editButton).parent().attr('id');
@@ -250,8 +246,6 @@ async function deleteNote(removeButton){
 
     renderNotes()
 }
-
-
 
 
 async function createNote(e) {
@@ -359,4 +353,26 @@ async function updateNote(e) {
     renderNotes();
 }
 
+async function getNumbers(){
+    let result = await fetch('/rest/numbers');
+    numbers = await result.json();
+    console.log(numbers);
 
+}
+
+async function updateNumber() {
+   
+    
+let currentNumber=count;
+let push = {
+    number:currentNumber
+}
+let result = await fetch("/rest/numbers", {
+    method: "PUT",
+    body: JSON.stringify(push)
+    
+}); 
+numbers.push(push);
+console.log(await result.text())
+}
+console.log("END OF MAIN.JS");

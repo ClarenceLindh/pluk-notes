@@ -1,55 +1,49 @@
 
 let notes = [];
-var count = 1;      
+let numbers = [];
+var count = 0;      
 let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
 let imgUrll=null;
+let editimageUrl = null;
+
 
 themeButton.addEventListener("click",function Function(){
+    count++;
     myFunction();
 });
-themeButton.addEventListener("dblclick",function Function(){
-    myFunction2();
-});
-let editimageUrl = null;
+
+
 
 
 
 function myFunction() {
+  console.log(" 1st count",count);
   
-    if(count == 0){
-    
+    if(count == 1){
+        console.log(" 2st count",count);
         document.body.style.backgroundImage =" url('image/coal.jpg')";
-       count++; 
-        console.log(count);} 
+       
+       } 
         
-        else { document.body.style.backgroundImage =null;
-count=0;
-console.log(count)};
+        else if (count==2){ 
+            console.log(" 3st count",count);
+            document.body.style.backgroundImage =" url('image/0000.jpg')";
+            console.log(count)}
+           
+            else if (count == 3){
+                console.log(" 4st count",count);
+                count=0;
+                document.body.style.backgroundImage =null;
+            
+            }else 
+            console.log(" 5st count",count);
 
-
-  };
-
-  
-function myFunction2() {
-  
-    if(count == 0){
-    
-        document.body.style.backgroundImage =" url('image/0000.jpg')";
-       count++; 
-        console.log(count);} 
-        
-        else { document.body.style.backgroundImage =null;
-count=0;
-console.log(count)};
-
-
-  };
+        };
 
   
 
-
-
+  
 indexRenderNotes();
 
 function indexRenderNotes() {
@@ -99,41 +93,43 @@ async function renderNotes() {
 
     for(let note of notes) {
         let date = new Date(note.date).toLocaleString();
-            if(imgUrll=="null"){
+        let noteLi = `
+        <script>saveNoteId2(this)</script>
+        `;
+        noteList.innerHTML += noteLi;
+        console.log("nuvarande url",imgUrll);
+        imgUrll=note.imageUrl;
+
+
+        if(imgUrll==null){
             let noteLi = `
             <div class="container">
 
             <div class="header"><span>${note.title}</span></div> 
             <li class="note" id="${note.id}"style="display:none;">
-
             <div class="note-content">${note.content}</div><br>
+           
+            <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button><br>
+            <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
             <div class="note-date">${date}</div>
-            <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
-            <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
          
-            <script> 
-             </script>
+           
             </li></div>
             `;
             noteList.innerHTML += noteLi;
-            console.log("nuvarande url",imgUrll);}else{
+            console.log("nuvarande url",imgUrll);}
+            
+            else{
                 let noteLi = `
                 <div class="container">
-    
                 <div class="header"><span>${note.title}</span></div> 
                 <li class="note" id="${note.id}"style="display:none;">
-    
                 <div class="note-content">${note.content}</div><br>
-                <div class="note-date">${date}</div>
-                <div class="imgParent">
-                 <button id="${note.imageUrl}" onclick="saveNoteId2(this)">skit</button>
+              
                  <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
-                 </div>
-                <button class="deleteButton" onclick="confirmClick(this)">Delete</button><br>
-                <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)">Edit</button><br>
-             
-                <script> 
-                 </script>
+                 <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button><br>
+                 <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
+                 <div class="note-date">${date}</div>
                 </li></div>
                 `;
                 noteList.innerHTML += noteLi;
@@ -144,76 +140,7 @@ async function renderNotes() {
            
     }
 
-   // <button id="${note.imageUrl}" onclick="saveNoteId2(this)">bhas</button>
 
-    
-   
-   var ParentImage = document.querySelectorAll(".imgParent");// Tar alla img.parent klasser och sätter in i variablen Parent Image
-    for (var index = 0; index <ParentImage.length; index++){ // Loopar igenom alla parent.image 
-        console.log("fsdsfdf",ParentImage[0]);
-     ParentImage[index].addEventListener("click", function(){ //lyssnar på en specifik parentimage och gör sedna koden på just den
-         this.classList.toggle("active");
-      });
-
-    
-
-
-    ParentImage[index].querySelector("button").addEventListener("click", //tar en specifik knapp fårn parentimage och kör en funktion
-      function testing(){
-
-        
-
-
-
-        if(imgUrll=="null"){
-         this.closest(".imgParent").remove();
-         console.log("bild element tas bort");}else (console.log("anteckningens url är ej  = null"));
-    });
-    }
- 
-    
-
-/*
-
-async function rensaskit(){
-    let noteId = $(e).parent();
-     noteId.removeChild(image);
-
-    renderNotes()
-    let button2 = document.getElementById('testdel');
-
-button2.addEventListener("click", function removeImageifnull(e){
-    vadsomhelst(e);
-    });
-
-    async function vadsomhelst(e){
-    var image = document.querySelector(".image");
-    var imgParent = document.querySelector(".imgParent");
-    var emb = document.querySelector (".em");
-    var unknown = "(unknown)";
-    console.log(emb);
-
-    imgParent.removeChild(image);
-    console.log(image);
-    console.log(e);
-    }
-    */
-
-    /*
-function removeImageifnull(){
-var image = document.querySelector(".image");
-var imgParent = document.querySelector(".imgParent");
-var emb = document.querySelector (".em");
-var unknown = "(unknown)";
-console.log(emb);
-
-if (emb === (unknown)){
-    imgParent.removeChild (image);
-}
-//imgParent.removeChild(image);
-console.log(image);
-} 
-*/
 
     $(".header").click(function () {
        
@@ -232,7 +159,6 @@ console.log(image);
     
     });
 }
-
 
 
 async function renderEditNote(id) {
@@ -267,8 +193,6 @@ async function renderEditNote(id) {
        
 
 }
-
-
 
 function saveNoteId(editButton) {
    editNoteId = $(editButton).parent().attr('id');
@@ -315,8 +239,6 @@ async function deleteNote(removeButton){
 
     renderNotes()
 }
-
-
 
 
 async function createNote(e) {
@@ -424,4 +346,25 @@ async function updateNote(e) {
     renderNotes();
 }
 
+async function getNumbers(){
+    let result = await fetch('/rest/numbers');
+    numbers = await result.json();
+    console.log(numbers);
 
+}
+
+async function updateNumber() {
+   
+    
+let currentNumber=count;
+let push = {
+    number:currentNumber.value
+}
+let result = await fetch("/rest/numbers", {
+    method: "PUT",
+    body: JSON.stringify(numbers)
+    
+});
+numbers.push(push);
+console.log(await result.text())
+}
