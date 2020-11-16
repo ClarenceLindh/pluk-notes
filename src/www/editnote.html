@@ -5,12 +5,13 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
         <script src="main.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-    <body>
+    <body  onload="myFunction()">
         <header>
             <div class="header-top">
                
-                    <h1 onclick="myFunction()"> <a href="index.html">PlukNotes</a></h1>
+                    <h1 > <a href="index.html">PlukNotes</a></h1>
                     <button id="themeBtn" type="button" >Set background image</button>
                      
                     
@@ -26,8 +27,8 @@
                     <input type="text" id="title" placeholder="Write title..."><br>                
                     <br> 
                     <textarea id="content" placeholder="Write content..." cols="30" rows="4"></textarea><br><br>              
-                    <input type="file" id="myimg" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
-                    <button type="submit">Create Note</button>
+                    <input class="inputt" type="file" id="myimg" accept="image/*,.pdf, audio/*, video/*"  class="fa fa-file-code-o">              
+                    <button class="myButton" type="submit"><i class="fa fa-plus"></i></button>
                  
                   </form>
 

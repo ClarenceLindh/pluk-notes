@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     
 </head>
-<body class="index">
-    <header>
+<body class="index"  onload="myFunction()">
         <div class="header-top">
                 <h1>PlukNotes</h1>
-                
+                <button onclick="getNumbers()">(log numbers)</button>
+                <button onclick="updateNumber()">(change numbers)</button>
                 <button id="themeBtn" type="button" >Set background image</button>
               
         </div>
