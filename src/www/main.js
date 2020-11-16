@@ -115,9 +115,8 @@ async function renderNotes() {
             <div class="header"><span>${note.title}</span></div> 
             <li class="note" id="${note.id}"style="display:none;">
             <div class="note-content">${note.content}</div><br>
-           
-            <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button><br>
-            <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
+            <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button>
+            <button class="editButton"  id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
             <div class="note-date">${date}</div>
          
            
@@ -132,11 +131,11 @@ async function renderNotes() {
                 <div class="header"><span>${note.title}</span></div> 
                 <li class="note" id="${note.id}"style="display:none;">
                 <div class="note-content">${note.content}</div><br>
-              
-                 <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
-                 <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button><br>
-                 <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
-                 <div class="note-date">${date}</div>
+                <a href="${note.imageUrl}" target="_blank">${note.imageUrl}</a>
+                <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
+                <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button>
+                <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
+                <div class="note-date">${date}</div>
                 </li></div>
                 `;
                 noteList.innerHTML += noteLi;
@@ -184,6 +183,7 @@ async function renderEditNote(id) {
             <h3>Edit Note!</h3>
             <form onsubmit="updateNote(event)">                
                 <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div><br>
+                <a href="${note.imageUrl}" target="_blank">${note.imageUrl}</a><br>
                 <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
                 <br> 
                 <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              

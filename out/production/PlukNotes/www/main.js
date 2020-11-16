@@ -197,7 +197,7 @@ async function renderEditNote(id) {
             }
         
     }
-       //<textarea id="content" cols="30" rows="4">${note.content}</textarea>
+     //  <textarea id="content" cols="30" rows="4">${note.content}</textarea>
 
 }
 
