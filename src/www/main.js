@@ -183,7 +183,9 @@ async function renderEditNote(id) {
             <button onclick="renderNotes();">Back</button>
             <h3>Edit Note!</h3>
             <form onsubmit="updateNote(event)">                
-                <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div><br>
+                <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
+                <input type="checkbox" id="deleteFile" name="Delete file">
+                <label for="deleteFile">Delete file</label><br>
                 <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
                 <br> 
                 <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
@@ -330,7 +332,14 @@ async function updateNote(e) {
 
 } 
 
-   console.log('URL', imageUrl);
+   console.log('URL of current file: ', imageUrl);
+
+    let willFileBeDeleted = document.querySelector("#deleteFile");
+    console.log('Value of deleteFile checkbox: ', willFileBeDeleted.checked);
+    if (willFileBeDeleted.checked == true) {
+        imageUrl = null;
+    }
+
 
     let titleInput = document.querySelector("#title");
     let contentInput = document.querySelector("#content");
