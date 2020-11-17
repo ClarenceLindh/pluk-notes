@@ -190,7 +190,7 @@ console.log("imag url" + editimageUrl)
             let noteLi = `
             <li class="currentNoteId" id="${note.id}">
             <div class="addNoteContainer">
-            <button onclick="renderNotes();">Back</button>
+            
             <h3>Edit Note!</h3>
             <form onsubmit="updateNote(event)">                
             
@@ -209,7 +209,7 @@ console.log("imag url" + editimageUrl)
                let noteLi = `
                 <li class="currentNoteId" id="${note.id}">
                 <div class="addNoteContainer">
-                <button onclick="renderNotes();">Back</button>
+               
                 <h3>Edit Note!</h3>
                 <form onsubmit="updateNote(event)">                
                 <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
