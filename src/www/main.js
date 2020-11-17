@@ -103,6 +103,9 @@ async function renderNotes() {
 
     for(let note of notes) {
         let date = new Date(note.date).toLocaleString();
+        let contentWithLinebreaks = note.content;
+        contentWithLinebreaks = contentWithLinebreaks.replace(/\r\n|\r|\n/g,"</br>");
+        
         let noteLi = `
         <script>saveNoteId2(this)</script>
         `;
@@ -117,7 +120,7 @@ async function renderNotes() {
 
             <div class="header"><span>${note.title}</span></div> 
             <li class="note" id="${note.id}"style="display:none;">
-            <div class="note-content">${note.content}</div><br>
+            <div class="note-content">${contentWithLinebreaks}</div><br>
             <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button>
             <button class="editButton"  id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
             <div class="note-date">${date}</div>
@@ -288,7 +291,7 @@ async function createNote(e) {
 
     let titleInput = document.querySelector("#title");
     let contentInput = document.querySelector("#content");
-
+   
     let note = {
         title: titleInput.value,
         content: contentInput.value,
