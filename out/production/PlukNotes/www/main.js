@@ -8,14 +8,16 @@ let imgUrll=null;
 let editimageUrl = null;
 
 
-themeButton.addEventListener("click",function Function(){
+async function Function1(){
     console.log("LETS RENDER1");
-    myFunction();
-});
+    count++;
+    await updateNumber();
+    await myFunction();
+};
 
 
+myFunction();
 
-console.log("LETS RENDER2");
 
 async function myFunction() {
    await getNumbers();
@@ -24,7 +26,7 @@ async function myFunction() {
     if(count == 1){
         console.log(" 2st count",count);
         document.body.style.backgroundImage =" url('image/coal.jpg')";
-        updateNumber();
+        
        
        } 
         
@@ -32,15 +34,20 @@ async function myFunction() {
             console.log(" 3st count",count);
             document.body.style.backgroundImage =" url('image/0000.jpg')";
        
-            updateNumber();
+            
         }
             
            
             else if (count == 3){
                 console.log(" 4st count",count);
+                document.body.style.backgroundImage= "url('image/space.jpg')";
+              
+            
+            } else if (count == 4){
+                console.log(" 4st count",count);
                 count=0;
                 document.body.style.backgroundImage =null;
-                updateNumber();
+              
             
             }else {
             console.log(" 5st count",count);
@@ -57,8 +64,6 @@ indexRenderNotes();
 function indexRenderNotes() {
     if($('body').is('.index')){
         renderNotes();
-        getNumbers();
-        myFunction();
     }
 }
 
@@ -103,6 +108,9 @@ async function renderNotes() {
 
     for(let note of notes) {
         let date = new Date(note.date).toLocaleString();
+        let contentWithLinebreaks = note.content;
+        contentWithLinebreaks = contentWithLinebreaks.replace(/\r\n|\r|\n/g,"</br>");
+        
         let noteLi = `
         <script>saveNoteId2(this)</script>
         `;
@@ -111,16 +119,15 @@ async function renderNotes() {
         imgUrll=note.imageUrl;
 
 
-        if(imgUrll==null){
+        if(imgUrll==null|| imgUrll=="null"){
             let noteLi = `
             <div class="container">
 
             <div class="header"><span>${note.title}</span></div> 
             <li class="note" id="${note.id}"style="display:none;">
-            <div class="note-content">${note.content}</div><br>
-           
-            <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button><br>
-            <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
+            <div class="note-content">${contentWithLinebreaks}</div><br>
+            <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button>
+            <button class="editButton"  id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
             <div class="note-date">${date}</div>
          
            
@@ -135,11 +142,11 @@ async function renderNotes() {
                 <div class="header"><span>${note.title}</span></div> 
                 <li class="note" id="${note.id}"style="display:none;">
                 <div class="note-content">${note.content}</div><br>
-              
-                 <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
-                 <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button><br>
-                 <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
-                 <div class="note-date">${date}</div>
+                <a href="${note.imageUrl}" target="_blank">${note.imageUrl}</a>
+                <div class="image"><embed class="em" src="${note.imageUrl}" alt="note-image"></div>
+                <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button>
+                <button class="editButton" id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
+                <div class="note-date">${date}</div>
                 </li></div>
                 `;
                 noteList.innerHTML += noteLi;
@@ -177,16 +184,18 @@ async function renderEditNote(id) {
     noteList.innerHTML = "";
     
     for(let note of notes) {
-
+console.log("imag url" + editimageUrl)
         if (id == note.id) {
-            
+            if(editimageUrl==null||editimageUrl=="null"){
             let noteLi = `
             <li class="currentNoteId" id="${note.id}">
             <div class="addNoteContainer">
-            <button onclick="renderNotes();">Back</button>
+            
             <h3>Edit Note!</h3>
             <form onsubmit="updateNote(event)">                
-                <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div><br>
+            
+                <input type="checkbox" id="deleteFile" name="Delete file">
+                <label for="deleteFile">Delete file</label><br>
                 <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
                 <br> 
                 <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
@@ -194,9 +203,29 @@ async function renderEditNote(id) {
                 <button type="submit">Update note</button>
               </form>  </div>  
             </li>`;
-
+            console.log("hääääär1")
             noteList.innerHTML += noteLi;
-
+            }else{
+               let noteLi = `
+                <li class="currentNoteId" id="${note.id}">
+                <div class="addNoteContainer">
+               
+                <h3>Edit Note!</h3>
+                <form onsubmit="updateNote(event)">                
+                <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
+                <a href="${note.imageUrl}" target="_blank">${note.imageUrl}</a><br>
+                    <input type="checkbox"  id="deleteFile" name="Delete file">
+                    <label for="deleteFile">Delete file</label><br>
+                    <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
+                    <br> 
+                    <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
+                    <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
+                    <button type="submit">Update note</button>
+                  </form>  </div>  
+                </li>`;
+                noteList.innerHTML += noteLi;
+console.log("hääääär:" + editimageUrl)
+            }
             }
         
     }
@@ -286,7 +315,7 @@ async function createNote(e) {
 
     let titleInput = document.querySelector("#title");
     let contentInput = document.querySelector("#content");
-
+   
     let note = {
         title: titleInput.value,
         content: contentInput.value,
@@ -301,7 +330,7 @@ async function createNote(e) {
     notes.push(note);
 
     console.log(await result.text())
-    
+    window.location.replace ('index.html');
 }
 
 async function updateNote(e) {
@@ -333,7 +362,14 @@ async function updateNote(e) {
 
 } 
 
-   console.log('URL', imageUrl);
+   console.log('URL of current file: ', imageUrl);
+
+    let willFileBeDeleted = document.querySelector("#deleteFile");
+    console.log('Value of deleteFile checkbox: ', willFileBeDeleted.checked);
+    if (willFileBeDeleted.checked == true) {
+        imageUrl = null;
+    }
+
 
     let titleInput = document.querySelector("#title");
     let contentInput = document.querySelector("#content");

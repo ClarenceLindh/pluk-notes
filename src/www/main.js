@@ -198,7 +198,7 @@ console.log("imag url" + editimageUrl)
             let noteLi = `
             <li class="currentNoteId" id="${note.id}">
             <div class="addNoteContainer">
-            <button onclick="renderNotes();">Back</button>
+            
             <h3>Edit Note!</h3>
             <form onsubmit="updateNote(event)">                
             
@@ -208,7 +208,7 @@ console.log("imag url" + editimageUrl)
                 <br> 
                 <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
                 <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
-                <button type="submit">Update note</button>
+                <button type="submit"><i class="fa fa-plus">Update note</i></button>
               </form>  </div>  
             </li>`;
             console.log("hääääär1")
@@ -217,7 +217,7 @@ console.log("imag url" + editimageUrl)
                let noteLi = `
                 <li class="currentNoteId" id="${note.id}">
                 <div class="addNoteContainer">
-                <button onclick="renderNotes();">Back</button>
+               
                 <h3>Edit Note!</h3>
                 <form onsubmit="updateNote(event)">                
                 <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
@@ -228,7 +228,9 @@ console.log("imag url" + editimageUrl)
                     <br> 
                     <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
                     <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
-                    <button type="submit">Update note</button>
+                    <button type="submit"><i class="fa fa-plus">Update note</i></button>
+
+                   
                   </form>  </div>  
                 </li>`;
                 noteList.innerHTML += noteLi;

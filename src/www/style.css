@@ -51,21 +51,23 @@ ul {
     padding-bottom: 0%;
     font-size: 15px;
 }
-
+ul>.currentNoteId{
+    background-color:rgba(46, 49, 53, 0);
+    
+}
   ul li {
     position: relative;
-    padding: 12px 8px 12px 40px;
+    padding: 12px 8px 12px 8px;
     list-style-type: none;
     color: white;
     background-color:rgba(46, 49, 53, 0.808);
-    border: 2px solid rgba(85, 83, 83, 0.911);
+    
     
     font-size: 18px;
     transition: 0.3s;
 
     
     border-radius: 5px;
-   
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -74,7 +76,7 @@ ul {
   }
 
   ul li:nth-child(odd) {
-    background: #00000091;
+    background: #00000000;
   }
 
 .header-top {
@@ -99,11 +101,13 @@ ul {
 
 .search{
     color: white;
-    background-color: rgba(15, 14, 14, 0.863);
-    border: rgb(0, 0, 0);
+    background-color:rgba(46, 49, 53, 0.808);
+    border:3px rgb(0, 0, 0);
     padding-bottom: 5px;
     padding-top: 5px;
     margin-top: 10px;
+
+  
 }
 
 .header-bottom {
@@ -129,7 +133,7 @@ main {
 }
 .container {
     width:100%;
-    border:1px solid #00000065;
+ 
 }
 .container div {
     width:100%;
