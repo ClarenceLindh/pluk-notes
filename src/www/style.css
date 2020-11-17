@@ -57,11 +57,13 @@ ul {
     padding: 12px 8px 12px 40px;
     list-style-type: none;
     color: white;
-    background: rgba(43, 35, 35, 0.637);
+    background-color:rgba(46, 49, 53, 0.808);
+    border: 2px solid rgba(85, 83, 83, 0.911);
+    
     font-size: 18px;
     transition: 0.3s;
 
-    border: 2px solid rgb(3, 2, 2);
+    
     border-radius: 5px;
    
 
@@ -72,7 +74,7 @@ ul {
   }
 
   ul li:nth-child(odd) {
-    background: #413d3d94;
+    background: #00000091;
   }
 
 .header-top {
@@ -168,7 +170,9 @@ footer {
     width:100%;
 }
 .container .header {
-    background-color:rgba(43, 35, 35, 0.637);
+    background-color:rgba(46, 49, 53, 0.808);
+    border: 2px solid rgb(128, 128, 128, 0.479);
+    box-shadow: 0 0 10px 0 rgba(243, 240, 240, 0.479);
     padding: 2px;
     cursor: pointer;
     font-weight: bold;
