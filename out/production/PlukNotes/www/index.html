@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     
 </head>
-<body class="index">
-    <header>
+<body class="index" >
         <div class="header-top">
-                <h1>PlukNotes</h1>
-                
-                <button id="themeBtn" type="button" >Set background image</button>
+                <h1 onclick="location.href='index.html'">PlukNotes</h1>
+                <button id="themeBtn" onclick="Function1()" type="button" >Set background image</button>
               
         </div>
-        <div class="header-bottom"><input type="text" class="search" placeholder="Type to search" onkeyup="search(this.value)" size="30"></div>
+        <div class="header-bottom"><input type="text" class="search" id="searchButton" placeholder="Type to search" onkeyup="searchAndFilter(this.value)" size="30"></div>
             
        
     </header>    
@@ -23,15 +22,12 @@
     
         
         <section>
-            
             <div id="notesList">
-                <ul>
+                <ul id="notesSearch">
                     <li>
-
                     </li>
                   </ul>
             </div>
-
         </section>
     </main>
     <footer>
