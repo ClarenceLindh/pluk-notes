@@ -200,7 +200,7 @@ console.log("imag url" + editimageUrl)
                 <br> 
                 <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
                 <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
-                <button type="submit">Update note</button>
+                <button type="submit"><i class="fa fa-plus">Update note</i></button>
               </form>  </div>  
             </li>`;
             console.log("hääääär1")
@@ -220,7 +220,9 @@ console.log("imag url" + editimageUrl)
                     <br> 
                     <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
                     <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
-                    <button type="submit">Update note</button>
+                    <button type="submit"><i class="fa fa-plus">Update note</i></button>
+
+                   
                   </form>  </div>  
                 </li>`;
                 noteList.innerHTML += noteLi;

@@ -51,7 +51,10 @@ ul {
     padding-bottom: 0%;
     font-size: 15px;
 }
-
+ul>.currentNoteId{
+    background-color:rgba(46, 49, 53, 0);
+    
+}
   ul li {
     position: relative;
     padding: 12px 8px 12px 8px;
@@ -73,7 +76,7 @@ ul {
   }
 
   ul li:nth-child(odd) {
-    background: #00000091;
+    background: #00000000;
   }
 
 .header-top {

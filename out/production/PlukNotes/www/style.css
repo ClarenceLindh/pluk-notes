@@ -54,16 +54,17 @@ ul {
 
   ul li {
     position: relative;
-    padding: 12px 8px 12px 40px;
+    padding: 12px 8px 12px 8px;
     list-style-type: none;
     color: white;
-    background: rgba(43, 35, 35, 0.637);
+    background-color:rgba(46, 49, 53, 0.808);
+    
+    
     font-size: 18px;
     transition: 0.3s;
 
-    border: 2px solid rgb(3, 2, 2);
+    
     border-radius: 5px;
-   
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -72,7 +73,7 @@ ul {
   }
 
   ul li:nth-child(odd) {
-    background: #413d3d94;
+    background: #00000091;
   }
 
 .header-top {
@@ -97,11 +98,13 @@ ul {
 
 .search{
     color: white;
-    background-color: rgba(15, 14, 14, 0.863);
-    border: rgb(0, 0, 0);
+    background-color:rgba(46, 49, 53, 0.808);
+    border:3px rgb(0, 0, 0);
     padding-bottom: 5px;
     padding-top: 5px;
     margin-top: 10px;
+
+  
 }
 
 .header-bottom {
@@ -127,7 +130,7 @@ main {
 }
 .container {
     width:100%;
-    border:1px solid #00000065;
+ 
 }
 .container div {
     width:100%;
@@ -168,7 +171,9 @@ footer {
     width:100%;
 }
 .container .header {
-    background-color:rgba(43, 35, 35, 0.637);
+    background-color:rgba(46, 49, 53, 0.808);
+    border: 2px solid rgb(128, 128, 128, 0.479);
+    box-shadow: 0 0 10px 0 rgba(243, 240, 240, 0.479);
     padding: 2px;
     cursor: pointer;
     font-weight: bold;
@@ -202,6 +207,7 @@ a{
 }
 .header-top>h1{
     margin-bottom: 1px;
+    cursor: pointer;
 }
 
 .addNoteContainer{
@@ -233,12 +239,6 @@ div.image {
     width: 100%;
 }
 
- div.image > embed{
-    width: 90%;
-    object-fit: contain;
-
-    height: 65vh;
-}
 
  #notesList .header{
      margin-top:1%;
@@ -276,6 +276,6 @@ div.image {
   .image>.em{
     width: 700px;
     height: 400px;
-    object-fit: cover;
+    object-fit: contain;
     
   }
