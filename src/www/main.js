@@ -69,7 +69,7 @@ function searchAndFilter(searchTerm){
         $("#notesSearch li").hide()
     } else {
         $("#notesSearch li").each(function() {
-            var currentText = $(this).text();
+            var currentText = $(this).children().text();
             currentText = currentText.toUpperCase();
             searchTerm = searchTerm.toUpperCase();
 
