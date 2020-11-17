@@ -100,6 +100,10 @@ async function getNotes() {
 
 async function renderNotes() {
     await getNotes();
+
+    let searchField = $('.search');
+    $(searchField).show();
+
     let noteList = document.querySelector("#notesList ul");
     console.log("nuvarande url",imgUrll);
 
@@ -180,6 +184,10 @@ async function renderNotes() {
 
 async function renderEditNote(id) {
     await getNotes();
+
+    let searchField = $('.search');
+    $(searchField).hide();
+
     let noteList = document.querySelector("#notesList ul");
     noteList.innerHTML = "";
     
