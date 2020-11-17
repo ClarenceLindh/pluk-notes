@@ -40,6 +40,11 @@ async function myFunction() {
            
             else if (count == 3){
                 console.log(" 4st count",count);
+                document.body.style.backgroundImage= "url('image/space.jpg')";
+              
+            
+            } else if (count == 4){
+                console.log(" 4st count",count);
                 count=0;
                 document.body.style.backgroundImage =null;
               
@@ -114,7 +119,7 @@ async function renderNotes() {
         imgUrll=note.imageUrl;
 
 
-        if(imgUrll==null){
+        if(imgUrll==null|| imgUrll=="null"){
             let noteLi = `
             <div class="container">
 
@@ -179,17 +184,16 @@ async function renderEditNote(id) {
     noteList.innerHTML = "";
     
     for(let note of notes) {
-
+console.log("imag url" + editimageUrl)
         if (id == note.id) {
-            
+            if(editimageUrl==null||editimageUrl=="null"){
             let noteLi = `
             <li class="currentNoteId" id="${note.id}">
             <div class="addNoteContainer">
             <button onclick="renderNotes();">Back</button>
             <h3>Edit Note!</h3>
             <form onsubmit="updateNote(event)">                
-                <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
-                <a href="${note.imageUrl}" target="_blank">${note.imageUrl}</a><br>
+            
                 <input type="checkbox" id="deleteFile" name="Delete file">
                 <label for="deleteFile">Delete file</label><br>
                 <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
@@ -199,9 +203,29 @@ async function renderEditNote(id) {
                 <button type="submit">Update note</button>
               </form>  </div>  
             </li>`;
-
+            console.log("hääääär1")
             noteList.innerHTML += noteLi;
-
+            }else{
+               let noteLi = `
+                <li class="currentNoteId" id="${note.id}">
+                <div class="addNoteContainer">
+                <button onclick="renderNotes();">Back</button>
+                <h3>Edit Note!</h3>
+                <form onsubmit="updateNote(event)">                
+                <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
+                <a href="${note.imageUrl}" target="_blank">${note.imageUrl}</a><br>
+                    <input type="checkbox"  id="deleteFile" name="Delete file">
+                    <label for="deleteFile">Delete file</label><br>
+                    <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
+                    <br> 
+                    <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
+                    <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
+                    <button type="submit">Update note</button>
+                  </form>  </div>  
+                </li>`;
+                noteList.innerHTML += noteLi;
+console.log("hääääär:" + editimageUrl)
+            }
             }
         
     }
