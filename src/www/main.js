@@ -64,26 +64,24 @@ function indexRenderNotes() {
 
 
 
-function search(needle){
-    
-    let haystack = $('.note');
-    
-    console.log('haystack', haystack, 'needle', needle);
+function searchAndFilter(searchTerm){
+    if(searchTerm == "") {
+        $("#notesSearch li").hide()
+    } else {
+        $("#notesSearch li").each(function() {
+            var currentText = $(this).text();
+            currentText = currentText.toUpperCase();
+            searchTerm = searchTerm.toUpperCase();
 
-    for(let note of haystack){
-        let content = $(note).find('.note-content').text();
-        let title = $(note).find('.note-title').text();
-        console.log('Note content: ', content);
-        console.log('Note title: ', title);
-
-        if(title.toLowerCase().includes(needle.toLowerCase()) || content.toLowerCase().includes(needle.toLowerCase())){
-            $(note).show();
-        } else {
-            $(note).hide();
-            
-        }
+            if (currentText.indexOf(searchTerm) >= 0) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     }
 }
+
 
 
 async function getNotes() {
