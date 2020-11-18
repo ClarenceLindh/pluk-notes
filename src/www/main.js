@@ -2,10 +2,10 @@
 let notes = [];
 let numbers = [];
 var count="";     
-let editNoteId = null;
+let editNoteId = "null";
 let themeButton = document.getElementById('themeBtn')
-let imgUrll=null;
-let editimageUrl = null;
+let imgUrll="null";
+let editimageUrl = "null";
 
 
 async function Function1(){
@@ -46,7 +46,7 @@ async function myFunction() {
             } else if (count == 4){
                 console.log(" 4st count",count);
                 count=0;
-                document.body.style.backgroundImage =null;
+                document.body.style.backgroundImage ="null";
               
             
             }else {
@@ -121,7 +121,7 @@ async function renderNotes() {
         imgUrll=note.imageUrl;
 
 
-        if(imgUrll==null|| imgUrll=="null"){
+        if(imgUrll=="null"){
             let noteLi = `
             <div class="container">
 
@@ -192,7 +192,7 @@ async function renderEditNote(id) {
     for(let note of notes) {
 console.log("imag url" + editimageUrl)
         if (id == note.id) {
-            if(editimageUrl==null||editimageUrl=="null"){
+            if(editimageUrl=="null"){
             let noteLi = `
             <li class="currentNoteId" id="${note.id}">
             <div class="addNoteContainer">
@@ -291,7 +291,7 @@ async function deleteNote(removeButton){
 async function createNote(e) {
     e.preventDefault();
 
-    let imageUrl = null;
+    let imageUrl = "null";
 
     let files = document.querySelector('input[type=file]').files;
 
@@ -375,7 +375,7 @@ async function updateNote(e) {
     let willFileBeDeleted = document.querySelector("#deleteFile");
     console.log('Value of deleteFile checkbox: ', willFileBeDeleted.checked);
     if (willFileBeDeleted.checked == true) {
-        imageUrl = null;
+        imageUrl = "null";
     }
 
 
