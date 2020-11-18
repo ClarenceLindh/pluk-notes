@@ -44,7 +44,7 @@ async function pickTheme() {
             } else if (count == 4){
                
                 count=0;
-                document.body.style.backgroundImage ="null";
+                document.body.style.backgroundImage =null;
               
             
             }else { console.log("End of pick theme")
