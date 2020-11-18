@@ -4,10 +4,10 @@ let numbers = [];
 var count="";     
 let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
-let imgUrll="null";
+let temporaryUrl="null";
 let editimageUrl = "null";
 
-
+// change theme when clicking on "change background"
 async function changeTheme(){
     
     count++;
@@ -15,10 +15,9 @@ async function changeTheme(){
     await pickTheme();
 };
 
-
 pickTheme();
 
-
+// Choose theme depending n number
 async function pickTheme() {
    await getNumbers();
   
@@ -45,7 +44,7 @@ async function pickTheme() {
             } else if (count == 4){
                
                 count=0;
-                document.body.style.backgroundImage ="null";
+                document.body.style.backgroundImage =null;
               
             
             }else { console.log("End of pick theme")
@@ -54,37 +53,15 @@ async function pickTheme() {
         }};
 
   
-
-  
 indexRenderNotes();
-
+// if we are in the index.html page render all notes
 function indexRenderNotes() {
     if($('body').is('.index')){
         renderNotes();
     }
 }
 
-
-
-<<<<<<< HEAD
-function searchAndFilter(searchTerm){
-    if(searchTerm == "") {
-        $("#notesSearch li").hide()
-    } else {
-        $("#notesSearch li").each(function() {
-            var currentText = $(this).children().text();
-            currentText = currentText.toUpperCase();
-            searchTerm = searchTerm.toUpperCase();
-
-            if (currentText.indexOf(searchTerm) >= 0) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        });
-    }
-}
-=======
+// Search and filter our notes
 $("#searchButton").keyup(function() {
     $(".container").hide();
     var text = $("#searchButton").val();
@@ -94,7 +71,6 @@ $("#searchButton").keyup(function() {
         }
     });
 });
->>>>>>> dev
 
 
 
@@ -104,7 +80,7 @@ async function getNotes() {
 
 }
 
-
+// render all notes
 async function renderNotes() {
     await getNotes();
 
@@ -122,15 +98,15 @@ async function renderNotes() {
         let contentWithLinebreaks = note.content;
         contentWithLinebreaks = contentWithLinebreaks.replace(/\r\n|\r|\n/g,"</br>");
         
-       // let noteLi = `
-        //<script>saveNoteId2(this)</script>
-        //`;
+        let noteLi = `
+        <script>saveNoteId2(this)</script>
+        `;
         noteList.innerHTML += noteLi;
        
-        imgUrll=note.imageUrl;
+        temporaryUrl=note.imageUrl;
 
 
-        if(imgUrll=="null"){
+        if(temporaryUrl=="null"){
             let noteLi = `
             <div class="container">
 
@@ -173,22 +149,18 @@ async function renderNotes() {
     $(".header").click(function () {
        
         $header = $(this);
-        //getting the next element
+     
         $content = $header.next();
-        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+      
         $content.slideToggle(15, function () {
-            //execute this after slideToggle is done
-            //change text of header based on visibility of content div
-            $header.text(function () {
-                //change text based on condition
-                //return $content.is(":visible")
-            });
+         
+            
         });
     
     });
 }
 
-
+// render a note that have been edited
 async function renderEditNote(id) {
     await getNotes();
 
@@ -245,7 +217,7 @@ async function renderEditNote(id) {
             }
         
     }
-     //  <textarea id="content" cols="30" rows="4">${note.content}</textarea>
+    
 
 }
 
@@ -258,16 +230,14 @@ function saveNoteId(editButton) {
    console.log("id for imageUrl", editimageUrl);
 }
 
-/*function saveNoteId2(editButton) {
-  // imgUrll = $(editButton).parent().attr('id');
-    
-  imgUrll = $(editButton).attr('id');
-    console.log('Id for note to edit:', imgUrll);
+function saveNoteId2(e) {  
+  temporaryUrl = $(e).attr('id');
+    console.log('Id for note to edit:', temporaryUrl);
    
     
- }*/
+ }
  
-
+//Alert when clicking on delete button
 async function confirmClick(removeButton){
     //let noteId = $(removeButton).parent().attr('id');
     if (confirm('Are you sure?')){
@@ -295,6 +265,11 @@ async function deleteNote(removeButton){
     renderNotes()
 }
 
+async function getNotes() {
+    let result = await fetch('/rest/notes');
+    notes = await result.json();
+
+}
 
 async function createNote(e) {
     e.preventDefault();
