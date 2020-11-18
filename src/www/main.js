@@ -169,9 +169,7 @@ async function renderNotes() {
       
         $content.slideToggle(15, function () {
          
-            $header.text(function () {
             
-            });
         });
     
     });
