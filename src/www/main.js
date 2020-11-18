@@ -69,23 +69,15 @@ function indexRenderNotes() {
 
 
 
-function searchAndFilter(searchTerm){
-    if(searchTerm == "") {
-        $("#notesSearch li").hide()
-    } else {
-        $("#notesSearch li").each(function() {
-            var currentText = $(this).children().text();
-            currentText = currentText.toUpperCase();
-            searchTerm = searchTerm.toUpperCase();
-
-            if (currentText.indexOf(searchTerm) >= 0) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        });
-    }
-}
+$("#searchButton").keyup(function() {
+    $(".container").hide();
+    var text = $("#searchButton").val();
+    $(".container").each(function() {
+        if($(this).text().toUpperCase().indexOf(text.toUpperCase()) != -1) {
+            $(this).show();
+        }
+    });
+});
 
 
 
