@@ -2,36 +2,35 @@
 let notes = [];
 let numbers = [];
 var count="";     
-let editNoteId = "null";
+let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
 let imgUrll="null";
 let editimageUrl = "null";
 
 
-async function Function1(){
-    console.log("LETS RENDER1");
+async function changeTheme(){
+    
     count++;
     await updateNumber();
-    await myFunction();
+    await pickTheme();
 };
 
 
-myFunction();
+pickTheme();
 
 
-async function myFunction() {
+async function pickTheme() {
    await getNumbers();
-  console.log(" 1st count",count);
-  console.log("LETS RENDER3");
+  
     if(count == 1){
-        console.log(" 2st count",count);
+       
         document.body.style.backgroundImage =" url('image/coal.jpg')";
         
        
        } 
         
         else if (count==2){ 
-            console.log(" 3st count",count);
+         
             document.body.style.backgroundImage =" url('image/0000.jpg')";
        
             
@@ -39,20 +38,18 @@ async function myFunction() {
             
            
             else if (count == 3){
-                console.log(" 4st count",count);
+               
                 document.body.style.backgroundImage= "url('image/space.jpg')";
               
             
             } else if (count == 4){
-                console.log(" 4st count",count);
+               
                 count=0;
                 document.body.style.backgroundImage ="null";
               
             
-            }else {
-            console.log(" 5st count",count);
-          
-            console.log(" AEEA"+count);
+            }else { console.log("End of pick theme")
+        
 
         }};
 
@@ -103,7 +100,7 @@ async function renderNotes() {
     $(searchField).show();
 
     let noteList = document.querySelector("#notesList ul");
-    console.log("nuvarande url",imgUrll);
+    
 
     noteList.innerHTML = "";
     
@@ -113,11 +110,11 @@ async function renderNotes() {
         let contentWithLinebreaks = note.content;
         contentWithLinebreaks = contentWithLinebreaks.replace(/\r\n|\r|\n/g,"</br>");
         
-        let noteLi = `
-        <script>saveNoteId2(this)</script>
-        `;
+       // let noteLi = `
+        //<script>saveNoteId2(this)</script>
+        //`;
         noteList.innerHTML += noteLi;
-        console.log("nuvarande url",imgUrll);
+       
         imgUrll=note.imageUrl;
 
 
@@ -136,7 +133,7 @@ async function renderNotes() {
             </li></div>
             `;
             noteList.innerHTML += noteLi;
-            console.log("nuvarande url",imgUrll);}
+           }
             
             else{
                 let noteLi = `
@@ -152,7 +149,7 @@ async function renderNotes() {
                 </li></div>
                 `;
                 noteList.innerHTML += noteLi;
-                console.log("nuvarande url",imgUrll);
+               
                 
             }
 
@@ -190,7 +187,6 @@ async function renderEditNote(id) {
     noteList.innerHTML = "";
     
     for(let note of notes) {
-console.log("imag url" + editimageUrl)
         if (id == note.id) {
             if(editimageUrl=="null"){
             let noteLi = `
@@ -209,7 +205,7 @@ console.log("imag url" + editimageUrl)
                 <button type="submit"><i class="fa fa-plus">Update note</i></button>
               </form>  </div>  
             </li>`;
-            console.log("hääääär1")
+          
             noteList.innerHTML += noteLi;
             }else{
                let noteLi = `
@@ -232,7 +228,7 @@ console.log("imag url" + editimageUrl)
                   </form>  </div>  
                 </li>`;
                 noteList.innerHTML += noteLi;
-console.log("hääääär:" + editimageUrl)
+
             }
             }
         
@@ -250,14 +246,14 @@ function saveNoteId(editButton) {
    console.log("id for imageUrl", editimageUrl);
 }
 
-function saveNoteId2(editButton) {
+/*function saveNoteId2(editButton) {
   // imgUrll = $(editButton).parent().attr('id');
     
   imgUrll = $(editButton).attr('id');
     console.log('Id for note to edit:', imgUrll);
    
     
- }
+ }*/
  
 
 async function confirmClick(removeButton){
@@ -403,11 +399,11 @@ async function updateNote(e) {
 async function getNumbers(){
     let result = await fetch('/rest/numbers');
     numbers = await result.json();
-    console.log(numbers);
+  
 
     count=numbers[0].number;
 
-    console.log("WE MADE IT HERE");
+ 
 
 }
 
