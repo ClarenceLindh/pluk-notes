@@ -4,34 +4,33 @@ let numbers = [];
 var count="";     
 let editNoteId = null;
 let themeButton = document.getElementById('themeBtn')
-let imgUrll=null;
-let editimageUrl = null;
+let imgUrll="null";
+let editimageUrl = "null";
 
 
-async function Function1(){
-    console.log("LETS RENDER1");
+async function changeTheme(){
+    
     count++;
     await updateNumber();
-    await myFunction();
+    await pickTheme();
 };
 
 
-myFunction();
+pickTheme();
 
 
-async function myFunction() {
+async function pickTheme() {
    await getNumbers();
-  console.log(" 1st count",count);
-  console.log("LETS RENDER3");
+  
     if(count == 1){
-        console.log(" 2st count",count);
+       
         document.body.style.backgroundImage =" url('image/coal.jpg')";
         
        
        } 
         
         else if (count==2){ 
-            console.log(" 3st count",count);
+         
             document.body.style.backgroundImage =" url('image/0000.jpg')";
        
             
@@ -39,20 +38,18 @@ async function myFunction() {
             
            
             else if (count == 3){
-                console.log(" 4st count",count);
+               
                 document.body.style.backgroundImage= "url('image/space.jpg')";
               
             
             } else if (count == 4){
-                console.log(" 4st count",count);
+               
                 count=0;
-                document.body.style.backgroundImage =null;
+                document.body.style.backgroundImage ="null";
               
             
-            }else {
-            console.log(" 5st count",count);
-          
-            console.log(" AEEA"+count);
+            }else { console.log("End of pick theme")
+        
 
         }};
 
@@ -74,7 +71,7 @@ function searchAndFilter(searchTerm){
         $("#notesSearch li").hide()
     } else {
         $("#notesSearch li").each(function() {
-            var currentText = $(this).text();
+            var currentText = $(this).children().text();
             currentText = currentText.toUpperCase();
             searchTerm = searchTerm.toUpperCase();
 
@@ -98,8 +95,12 @@ async function getNotes() {
 
 async function renderNotes() {
     await getNotes();
+
+    let searchField = $('.search');
+    $(searchField).show();
+
     let noteList = document.querySelector("#notesList ul");
-    console.log("nuvarande url",imgUrll);
+    
 
     noteList.innerHTML = "";
     
@@ -109,25 +110,21 @@ async function renderNotes() {
         let contentWithLinebreaks = note.content;
         contentWithLinebreaks = contentWithLinebreaks.replace(/\r\n|\r|\n/g,"</br>");
         
-        let noteLi = `
-        <script>saveNoteId2(this)</script>
-        `;
+       // let noteLi = `
+        //<script>saveNoteId2(this)</script>
+        //`;
         noteList.innerHTML += noteLi;
-        console.log("nuvarande url",imgUrll);
+       
         imgUrll=note.imageUrl;
 
 
-        if(imgUrll==null|| imgUrll=="null"){
+        if(imgUrll=="null"){
             let noteLi = `
             <div class="container">
 
             <div class="header"><span>${note.title}</span></div> 
             <li class="note" id="${note.id}"style="display:none;">
-<<<<<<< HEAD
             <div class="note-content">${contentWithLinebreaks}</div><br>
-=======
-            <div class="note-content">${note.content}</div><br>
->>>>>>> SearchFixes
             <button class="deleteButton" onclick="confirmClick(this)"><i class="fa fa-trash"></i></button>
             <button class="editButton"  id="${note.imageUrl}" onclick="saveNoteId(this)"><i class="fa fa-edit"></i></button><br>
             <div class="note-date">${date}</div>
@@ -136,7 +133,7 @@ async function renderNotes() {
             </li></div>
             `;
             noteList.innerHTML += noteLi;
-            console.log("nuvarande url",imgUrll);}
+           }
             
             else{
                 let noteLi = `
@@ -152,7 +149,7 @@ async function renderNotes() {
                 </li></div>
                 `;
                 noteList.innerHTML += noteLi;
-                console.log("nuvarande url",imgUrll);
+               
                 
             }
 
@@ -182,35 +179,33 @@ async function renderNotes() {
 
 async function renderEditNote(id) {
     await getNotes();
+
+    let searchField = $('.search');
+    $(searchField).hide();
+
     let noteList = document.querySelector("#notesList ul");
     noteList.innerHTML = "";
     
     for(let note of notes) {
-console.log("imag url" + editimageUrl)
         if (id == note.id) {
-            if(editimageUrl==null||editimageUrl=="null"){
+            if(editimageUrl=="null"){
             let noteLi = `
             <li class="currentNoteId" id="${note.id}">
             <div class="addNoteContainer">
             
             <h3>Edit Note!</h3>
             <form onsubmit="updateNote(event)">                
-<<<<<<< HEAD
             
-=======
-                <div class="image"><embed src="${note.imageUrl}" alt="note-image"></div>
-                <a href="${note.imageUrl}" target="_blank">${note.imageUrl}</a><br>
->>>>>>> SearchFixes
                 <input type="checkbox" id="deleteFile" name="Delete file">
                 <label for="deleteFile">Delete file</label><br>
                 <input type="text" name="textbox" id="title" Value="${note.title}"><br>                
                 <br> 
                 <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
                 <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
-                <button type="submit">Update note</button>
+                <button type="submit"><i class="fa fa-plus">Update note</i></button>
               </form>  </div>  
             </li>`;
-            console.log("hääääär1")
+          
             noteList.innerHTML += noteLi;
             }else{
                let noteLi = `
@@ -227,11 +222,13 @@ console.log("imag url" + editimageUrl)
                     <br> 
                     <textarea id="content" cols="30" rows="4">${note.content}</textarea><br><br>              
                     <input type="file" accept="image/*,.pdf, audio/*, video/*" placeholder="Select image">              
-                    <button type="submit">Update note</button>
+                    <button type="submit"><i class="fa fa-plus">Update note</i></button>
+
+                   
                   </form>  </div>  
                 </li>`;
                 noteList.innerHTML += noteLi;
-console.log("hääääär:" + editimageUrl)
+
             }
             }
         
@@ -249,14 +246,14 @@ function saveNoteId(editButton) {
    console.log("id for imageUrl", editimageUrl);
 }
 
-function saveNoteId2(editButton) {
+/*function saveNoteId2(editButton) {
   // imgUrll = $(editButton).parent().attr('id');
     
   imgUrll = $(editButton).attr('id');
     console.log('Id for note to edit:', imgUrll);
    
     
- }
+ }*/
  
 
 async function confirmClick(removeButton){
@@ -290,7 +287,7 @@ async function deleteNote(removeButton){
 async function createNote(e) {
     e.preventDefault();
 
-    let imageUrl = null;
+    let imageUrl = "null";
 
     let files = document.querySelector('input[type=file]').files;
 
@@ -374,7 +371,7 @@ async function updateNote(e) {
     let willFileBeDeleted = document.querySelector("#deleteFile");
     console.log('Value of deleteFile checkbox: ', willFileBeDeleted.checked);
     if (willFileBeDeleted.checked == true) {
-        imageUrl = null;
+        imageUrl = "null";
     }
 
 
@@ -402,11 +399,11 @@ async function updateNote(e) {
 async function getNumbers(){
     let result = await fetch('/rest/numbers');
     numbers = await result.json();
-    console.log(numbers);
+  
 
     count=numbers[0].number;
 
-    console.log("WE MADE IT HERE");
+ 
 
 }
 
