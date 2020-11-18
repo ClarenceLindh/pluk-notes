@@ -62,24 +62,23 @@ function indexRenderNotes() {
 }
 
 // Search and filter our notes
-function searchAndFilter(searchTerm){
-    if(searchTerm == "") {
-        $("#notesSearch li").hide()
-    } else {
-        $("#notesSearch li").each(function() {
-            var currentText = $(this).children().text();
-            currentText = currentText.toUpperCase();
-            searchTerm = searchTerm.toUpperCase();
+$("#searchButton").keyup(function() {
+    $(".container").hide();
+    var text = $("#searchButton").val();
+    $(".container").each(function() {
+        if($(this).text().toUpperCase().indexOf(text.toUpperCase()) != -1) {
+            $(this).show();
+        }
+    });
+});
 
-            if (currentText.indexOf(searchTerm) >= 0) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        });
-    }
+
+
+async function getNotes() {
+    let result = await fetch('/rest/notes');
+    notes = await result.json();
+
 }
-
 
 // render all notes
 async function renderNotes() {
@@ -150,16 +149,12 @@ async function renderNotes() {
     $(".header").click(function () {
        
         $header = $(this);
-        //getting the next element
+     
         $content = $header.next();
-        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+      
         $content.slideToggle(15, function () {
-            //execute this after slideToggle is done
-            //change text of header based on visibility of content div
-            $header.text(function () {
-                //change text based on condition
-                //return $content.is(":visible")
-            });
+         
+            
         });
     
     });
@@ -222,7 +217,7 @@ async function renderEditNote(id) {
             }
         
     }
-     //  <textarea id="content" cols="30" rows="4">${note.content}</textarea>
+    
 
 }
 

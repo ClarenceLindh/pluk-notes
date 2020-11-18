@@ -66,6 +66,7 @@ function indexRenderNotes() {
 
 
 
+<<<<<<< HEAD
 function searchAndFilter(searchTerm){
     if(searchTerm == "") {
         $("#notesSearch li").hide()
@@ -83,6 +84,17 @@ function searchAndFilter(searchTerm){
         });
     }
 }
+=======
+$("#searchButton").keyup(function() {
+    $(".container").hide();
+    var text = $("#searchButton").val();
+    $(".container").each(function() {
+        if($(this).text().toUpperCase().indexOf(text.toUpperCase()) != -1) {
+            $(this).show();
+        }
+    });
+});
+>>>>>>> dev
 
 
 
